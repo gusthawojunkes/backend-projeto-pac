@@ -1,4 +1,4 @@
-package br.edu.catolicasc.pac.config.utils;
+package br.edu.catolicasc.utils;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

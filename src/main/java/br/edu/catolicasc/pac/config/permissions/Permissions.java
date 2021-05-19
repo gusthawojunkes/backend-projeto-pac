@@ -1,6 +1,5 @@
 package br.edu.catolicasc.pac.config.permissions;
 
-import br.edu.catolicasc.pac.config.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
