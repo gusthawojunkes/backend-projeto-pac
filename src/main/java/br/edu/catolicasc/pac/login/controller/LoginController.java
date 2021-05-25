@@ -13,7 +13,7 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<?> login(LoginModel model) {
-        Boolean authenticated = authenticate(username, password, token);
+        Boolean authenticated = authenticate(model);
         HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
         return new ResponseEntity<>(authenticated, statusCode);
     }
