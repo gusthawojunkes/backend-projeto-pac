@@ -1,7 +1,7 @@
 package br.edu.catolicasc.pac.login.controller;
 
 import br.edu.catolicasc.pac.config.user.User;
-import br.edu.catolicasc.utils.StringUtils;
+import br.edu.catolicasc.utils.Utils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,21 +18,16 @@ public class LoginController {
         Boolean authenticated = authenticate(username, password, token);
         HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
         return new ResponseEntity<>(authenticated, statusCode);
-
     }
 
     private Boolean authenticate(String username, String password, String token) {
         System.out.println("Validating >>> [" + username + " - " + password + " - " + token + "]");
-        User userLogin = User.findByName(username);
+        User userLogin = User.findByUserName(username);
         if (userLogin == null) return false;
-        if (StringUtils.isNotBlank(userLogin.getPassword())
+        return Utils.isNotEmpty(userLogin.getPassword())
             && userLogin.getPassword().equals(password)
-            && StringUtils.isNotBlank(userLogin.getUserToken())
-            && userLogin.getUserToken().equals(token))
-        {
-            return true;
-        }
-        return null;
+            && Utils.isNotEmpty(userLogin.getUserToken())
+            && userLogin.getUserToken().equals(token);
     }
 
 }

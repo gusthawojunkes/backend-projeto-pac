@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping("/{name}")
     public ResponseEntity<?> findByName(@PathVariable("name") String name) {
-        User user = userDAO.findByName(name);
+        User user = userDAO.findByUserName(name);
         if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

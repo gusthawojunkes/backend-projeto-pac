@@ -23,6 +23,9 @@ public class User extends AbstractEntity {
     private String email;
 
     @Column(nullable = false)
+    private String userName;
+
+    @Column(nullable = false)
     private String password;
 
     private Date birth;
@@ -39,7 +42,7 @@ public class User extends AbstractEntity {
 
     //Group
 
-    public static User findByName(String username) {
+    public static User findByUserName(String userName) {
         return null;
     }
 
