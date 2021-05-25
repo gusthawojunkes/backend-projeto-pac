@@ -1,6 +1,6 @@
 package br.edu.catolicasc.utils;
 
-public class StringUtils {
+public class Utils {
 
     public static Boolean isBlank(String string) {
         if (string == null) return true;
