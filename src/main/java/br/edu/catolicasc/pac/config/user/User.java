@@ -46,4 +46,12 @@ public class User extends AbstractEntity {
         return null;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUserToken() {
+        return userToken;
+    }
+
 }
