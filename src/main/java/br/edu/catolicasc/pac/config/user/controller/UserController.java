@@ -55,4 +55,10 @@ public class UserController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping(path = "/name/{userName}")
+    public ResponseEntity findByUserName(@PathVariable("userName") String userName) {
+        User user = userDAO.findByUserName(userName);
+        if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

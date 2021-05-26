@@ -26,5 +26,11 @@ Consumes: application/json
 ----------------------
 Path: /delete/{id}
 Method: DELETE
+----------------------
+Path: /name/{userName}
+Method: GET
+----------------------
+Path: /{id}
+Method: GET
 ```
     

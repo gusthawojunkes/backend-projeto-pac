@@ -7,15 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping(value = "/login")
 public class LoginController {
 
-
-    @PostMapping(consumes = "application/json")
-    public ResponseEntity<?> login(@RequestBody LoginModel model) {
-        Boolean authenticated = authenticate(model);
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping
+    public ResponseEntity<?> login(@RequestBody LoginModel login) {
+        Boolean authenticated = authenticate(login);
         HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
         return new ResponseEntity<>(authenticated, statusCode);
     }
