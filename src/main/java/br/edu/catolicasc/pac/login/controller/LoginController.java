@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @RequestMapping(value = "/login")
 public class LoginController {
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(consumes = "application/json")
     public ResponseEntity<?> login(@RequestBody LoginModel model) {
         Boolean authenticated = authenticate(model);
