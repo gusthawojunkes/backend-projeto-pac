@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @RequestMapping(value = "/login")
 public class LoginController {
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public ResponseEntity<?> login(@RequestBody LoginModel model) {
         Boolean authenticated = authenticate(model);
         HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
