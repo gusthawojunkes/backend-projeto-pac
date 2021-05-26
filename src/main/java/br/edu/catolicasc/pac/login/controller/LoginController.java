@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 @RestController
 @RequestMapping(value = "/login")
 public class LoginController {

@@ -2,12 +2,16 @@ package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -56,6 +60,15 @@ public class User extends AbstractEntity {
 
     public String getUserToken() {
         return userToken;
+    }
+
+    public void setFields(User user) {
+        this.setName(user.getName());
+        this.setEmail(user.getEmail());
+        this.setUserName(user.getUserName());
+        this.setPassword(user.getPassword());
+        this.setBirth(user.getBirth());
+        this.setFone(user.getFone());
     }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UserController {
 
     private final UserRepository userDAO;
@@ -32,9 +32,27 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public User create(@RequestBody User user) {
         return userDAO.save(user);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> update(@RequestBody User user) {
+        if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
+        return userDAO.findById(user.getId()).map(record -> {
+            record.setFields(user);
+            User updated = userDAO.save(record);
+            return ResponseEntity.ok().body(updated);
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping(path ={"/delete/{id}"})
+    public ResponseEntity <?> delete(@PathVariable Long id) {
+        return userDAO.findById(id).map(record -> {
+            userDAO.deleteById(id);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
     }
 
 }
