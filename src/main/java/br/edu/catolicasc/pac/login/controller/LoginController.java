@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     @PostMapping
-    public ResponseEntity<?> login(LoginModel model) {
+    public ResponseEntity<?> login(@RequestBody LoginModel model) {
         Boolean authenticated = authenticate(model);
         HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
         return new ResponseEntity<>(authenticated, statusCode);
@@ -20,16 +20,25 @@ public class LoginController {
 
     private Boolean authenticate(LoginModel model) {
         if (model == null) return false;
+
+        log(model);
+
         String login = model.getLogin();
+        User userLogin = User.findByUserName(login);
+
+        if (userLogin == null) return false;
+
         String password = model.getPassword();
         String token = model.getToken();
-        System.out.println("Validating >>> [" + login + " - " + password + " - " + token + "]");
-        User userLogin = User.findByUserName(login);
-        if (userLogin == null) return false;
+
         return Utils.isNotEmpty(userLogin.getPassword())
             && userLogin.getPassword().equals(password)
             && Utils.isNotEmpty(userLogin.getUserToken())
             && userLogin.getUserToken().equals(token);
+    }
+
+    public void log(LoginModel model) {
+        System.out.println("Validating >>> [" + model.getLogin() + " - " + model.getPassword() + " - " + model.getToken() + "]");
     }
 
 }

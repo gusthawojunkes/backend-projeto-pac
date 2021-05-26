@@ -1,6 +1,7 @@
 package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.utils.AbstractEntity;
+import br.edu.catolicasc.utils.Utils;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +44,9 @@ public class User extends AbstractEntity {
     //Group
 
     public static User findByUserName(String userName) {
+        if (Utils.isNotEmpty(userName)) {
+
+        }
         return null;
     }
 
