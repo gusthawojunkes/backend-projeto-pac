@@ -7,8 +7,8 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-//@Entity
-public class Group {
+@Entity
+public class UserGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

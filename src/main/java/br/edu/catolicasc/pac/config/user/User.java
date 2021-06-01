@@ -1,5 +1,7 @@
 package br.edu.catolicasc.pac.config.user;
 
+import br.edu.catolicasc.pac.config.address.Address;
+import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
@@ -43,9 +45,11 @@ public class User extends AbstractEntity {
 
     private String userToken;
 
-    //Address
+    @OneToOne
+    private Address address;
 
-    //Group
+    @OneToOne
+    private UserGroup group;
 
     public static User findByUserName(String userName) {
         if (Utils.isNotEmpty(userName)) {
