@@ -2,6 +2,8 @@ package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
+import br.edu.catolicasc.pac.config.user.controller.UserController;
+import br.edu.catolicasc.pac.repository.user.UserRepository;
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
@@ -17,7 +19,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class User extends AbstractEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,13 +52,6 @@ public class User extends AbstractEntity {
 
     @OneToOne
     private UserGroup group;
-
-    public static User findByUserName(String userName) {
-        if (Utils.isNotEmpty(userName)) {
-
-        }
-        return null;
-    }
 
     public String getPassword() {
         return password;
