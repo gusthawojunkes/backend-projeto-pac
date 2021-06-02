@@ -38,21 +38,20 @@ public class LoginController {
 
         log(model);
 
-        if (model.isValid()) {
-            String userName = model.getLogin();
-            User userLogin = userDAO.findByUserName(userName);
+        if (!model.isValid()) return false;
 
-            if (userLogin == null) return false;
+        String userName = model.getLogin();
+        User userLogin = userDAO.findByUserName(userName);
 
-            if (Utils.isEmpty(userLogin.getUserToken())) return false;
+        if (userLogin == null) return false;
 
-            String password = model.getPassword();
-            String token = model.getToken();
+        if (Utils.isEmpty(userLogin.getUserToken())) return false;
 
-            return userLogin.getPassword().equals(password) && userLogin.getUserToken().equals(token);
-        }
+        String password = model.getPassword();
+        String token = model.getToken();
 
-        return false;
+        return userLogin.getPassword().equals(password) && userLogin.getUserToken().equals(token);
+
     }
 
     public void log(LoginModel model) {

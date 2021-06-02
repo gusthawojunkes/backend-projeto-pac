@@ -26,9 +26,8 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity findById(@PathVariable("id") Long id) {
+    public ResponseEntity<?> findById(@PathVariable("id") Long id) {
         Optional<User> user = userDAO.findById(id);
-        if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -48,7 +47,7 @@ public class UserController {
     }
 
     @DeleteMapping(path ={"/delete/{id}"})
-    public ResponseEntity <?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         return userDAO.findById(id).map(record -> {
             userDAO.deleteById(id);
             return ResponseEntity.ok().build();
@@ -56,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/name/{userName}")
-    public ResponseEntity findByUserName(@PathVariable("userName") String userName) {
+    public ResponseEntity<?> findByUserName(@PathVariable("userName") String userName) {
         User user = userDAO.findByUserName(userName);
         if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(user, HttpStatus.OK);

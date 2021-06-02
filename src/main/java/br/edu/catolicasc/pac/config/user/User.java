@@ -53,14 +53,6 @@ public class User {
     @OneToOne
     private UserGroup group;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getUserToken() {
-        return userToken;
-    }
-
     public void setFields(User user) {
         this.setName(user.getName());
         this.setEmail(user.getEmail());

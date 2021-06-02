@@ -11,18 +11,6 @@ public class LoginModel {
     private String token;
 
     public Boolean isValid() {
-        if (Utils.isEmpty(this.login) || Utils.isEmpty(this.password) || Utils.isEmpty(this.token)) return false;
-        return true;
+        return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password) && !Utils.isEmpty(this.token);
     }
-
-    public String getLogin() {
-        return login;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public String getToken() {
-        return token;
-    }
-
 }
