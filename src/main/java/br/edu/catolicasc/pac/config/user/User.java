@@ -10,8 +10,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
+import java.sql.SQLException;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -28,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -60,6 +62,13 @@ public class User {
         this.setPassword(user.getPassword());
         this.setBirth(user.getBirth());
         this.setFone(user.getFone());
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void validateEmail() throws Exception {
+        String email = this.email;
+        if (StringUtils.isBlank(email) || Utils.Email.isNotValid(email)) throw new Exception("Invalid e-mail");
     }
 
 }

@@ -2,6 +2,8 @@ package br.edu.catolicasc.utils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -22,4 +24,15 @@ public class Utils {
         return !isEmpty(value);
     }
 
+    public static class Email {
+
+        private static final String REGEX = "^(.+)@(.+)$";
+
+        public static Boolean isNotValid(String email) {
+            Pattern pattern = Pattern.compile(REGEX);
+            Matcher matcher = pattern.matcher(email);
+            return !matcher.matches();
+        }
+
+    }
 }
