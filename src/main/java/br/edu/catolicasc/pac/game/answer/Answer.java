@@ -17,7 +17,8 @@ public class Answer {
     @OneToOne
     private Question question;
 
-    //answer enum(‘A’, ‘B’, ‘C’, ‘D’, ‘E’) -> questionAlternative
+    @Column(nullable = false, length = 1)
+    private String answer;
 
     @OneToOne
     private User student;

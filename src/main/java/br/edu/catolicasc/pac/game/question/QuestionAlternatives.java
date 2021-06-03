@@ -11,8 +11,8 @@ public class QuestionAlternatives {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToMany
-//    private Question question;
+    @OneToOne
+    private Question question;
 
     @ManyToOne
     private Alternatives alternatives;

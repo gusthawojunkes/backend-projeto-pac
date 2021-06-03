@@ -28,10 +28,14 @@ public class Utils {
 
         private static final String REGEX = "^(.+)@(.+)$";
 
-        public static Boolean isNotValid(String email) {
+        public static Boolean isValid(String email) {
             Pattern pattern = Pattern.compile(REGEX);
             Matcher matcher = pattern.matcher(email);
-            return !matcher.matches();
+            return matcher.matches();
+        }
+
+        public static Boolean isNotValid(String email) {
+            return !isValid(email);
         }
 
     }

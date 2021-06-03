@@ -7,7 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Question {
@@ -22,8 +21,8 @@ public class Question {
     @Column(nullable = false)
     private String description;
 
-//    @OneToMany
-//    private Level level;
+    @ManyToOne
+    private Level level;
 
     @ManyToOne
     private User owner;
@@ -34,6 +33,6 @@ public class Question {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    //correct_response enum(‘A’, ‘B’, ‘C’, ‘D’, ‘E’)
-
+    @Column(nullable = false, length = 1)
+    private String correct_response;
 }

@@ -12,6 +12,7 @@ public class Alternatives {
     @Column(nullable = false)
     private String description;
 
-    //option enum(‘A’,’B’,’C’,’D’,’E’) NOT NULL
+    @Column(nullable = false, length = 1)
+    private String option;
 
 }
