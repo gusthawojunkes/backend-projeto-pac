@@ -3,7 +3,7 @@ package br.edu.catolicasc.pac.game.alternatives;
 import javax.persistence.*;
 
 @Entity
-public class Alternatives {
+public class Alternative {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +13,6 @@ public class Alternatives {
     private String description;
 
     @Column(nullable = false, length = 1)
-    private String option;
+    private char option;
 
 }

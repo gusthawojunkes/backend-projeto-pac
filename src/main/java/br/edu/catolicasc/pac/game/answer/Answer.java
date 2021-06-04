@@ -18,14 +18,9 @@ public class Answer {
     private Question question;
 
     @Column(nullable = false, length = 1)
-    private String answer;
+    private char answer;
 
     @OneToOne
     private User student;
-
-    @CreationTimestamp
-    private LocalDateTime answeredAt;
-
-    private Integer points;
 
 }

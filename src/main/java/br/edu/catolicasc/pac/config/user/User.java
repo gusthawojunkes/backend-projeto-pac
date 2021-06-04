@@ -2,9 +2,6 @@ package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
-import br.edu.catolicasc.pac.config.user.controller.UserController;
-import br.edu.catolicasc.pac.repository.user.UserRepository;
-import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +10,6 @@ import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
-import java.sql.SQLException;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -54,6 +50,8 @@ public class User {
 
     @OneToOne
     private UserGroup group;
+
+    private Integer points;
 
     public void setFields(User user) {
         this.setName(user.getName());
