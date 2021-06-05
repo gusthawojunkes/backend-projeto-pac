@@ -2,10 +2,8 @@ package br.edu.catolicasc.pac.game.answer;
 
 import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.game.question.Question;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class Answer {
@@ -20,7 +18,7 @@ public class Answer {
     @Column(nullable = false, length = 1)
     private char answer;
 
-    @OneToOne
-    private User student;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "answer")
+    private User students;
 
 }

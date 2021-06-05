@@ -26,10 +26,11 @@ public class Utils {
 
     public static class Email {
 
-        private static final String REGEX = "^(.+)@(.+)$";
+        private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        private static final Pattern pattern = Pattern.compile(EMAIL_PATTERN, Pattern.CASE_INSENSITIVE);
 
         public static Boolean isValid(String email) {
-            Pattern pattern = Pattern.compile(REGEX);
             Matcher matcher = pattern.matcher(email);
             return matcher.matches();
         }

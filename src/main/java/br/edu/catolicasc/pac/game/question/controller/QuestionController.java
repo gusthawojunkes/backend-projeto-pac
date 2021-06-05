@@ -27,9 +27,7 @@ public class QuestionController {
 
     @PostMapping("/create")
     public Question create(@RequestBody QuestionModel model) {
-        Question newQuestion = new Question(model);
-        return null;
-//        return questionDAO.save(question);
+        return questionDAO.save(new Question(model));
     }
 
     public Question getById(Long id) {

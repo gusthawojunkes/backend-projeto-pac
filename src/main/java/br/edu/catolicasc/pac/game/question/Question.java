@@ -1,10 +1,8 @@
 package br.edu.catolicasc.pac.game.question;
 
-import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.game.alternatives.Alternative;
 import br.edu.catolicasc.pac.game.level.Level;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -26,8 +22,8 @@ public class Question {
     public Question(QuestionModel model) {
         this.title = model.getTitle();
         this.description = model.getDescription();
-        //this.level = model.getLevel();
-        //this.owner = model.getOwnerName();
+        this.level = model.getLevel();
+//        this.owner = model.getOwner();
         this.correctResponse = model.getCorrectResponse();
         this.alternatives = model.getAlternatives();
     }
@@ -45,8 +41,8 @@ public class Question {
     @ManyToOne
     private Level level;
 
-    @ManyToOne
-    private User owner;
+//    @OneToOne
+//    private User owner;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -57,8 +53,9 @@ public class Question {
     @Column(nullable = false, length = 1)
     private char correctResponse;
 
-    @OneToMany(orphanRemoval = true)
-    private Collection<Alternative> alternatives;
+    @Column(nullable = false)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Alternative> alternatives;
 
     private Integer points;
 

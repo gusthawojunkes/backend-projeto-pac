@@ -2,6 +2,8 @@ package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
+import br.edu.catolicasc.pac.config.user.model.UserModel;
+import br.edu.catolicasc.pac.game.answer.Answer;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +12,8 @@ import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -19,26 +23,44 @@ import java.util.Date;
 @Entity
 public class User {
 
+    private static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+
+    public User(UserModel model) throws ParseException {
+        this.name = model.getName();
+        this.email = model.getEmail();
+        this.userName = model.getUserName();
+        this.password = model.getPassword();
+        this.fone = model.getFone();
+        this.flagMaster = model.getFlagMaster();
+        this.extraTime = model.getExtraTime();
+        this.userToken = model.getUserToken();
+        this.points = model.getPoints();
+        this.birth = SDF.parse(model.getBirth());
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 70)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
 
     @Column(nullable = false)
     private String userName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String password;
 
     private Date birth;
 
+    @Column(length = 20)
     private String fone;
 
+    @Column(length = 1)
     private Integer flagMaster;
 
     private Integer extraTime;
@@ -51,7 +73,11 @@ public class User {
     @OneToOne
     private UserGroup group;
 
+    @Column(length = 3)
     private Integer points;
+
+    @OneToOne
+    private Answer answer;
 
     public void setFields(User user) {
         this.setName(user.getName());
