@@ -13,50 +13,50 @@ import java.util.Optional;
 @RequestMapping(value = "/users")
 public class UserController {
 
-    private final UserRepository userDAO;
+    private final UserRepository repo;
 
     @Autowired
-    public UserController(UserRepository userDAO) {
-        this.userDAO = userDAO;
+    public UserController(UserRepository repo) {
+        this.repo = repo;
     }
 
     @GetMapping
     public Iterable<User> findAll() {
-        return userDAO.findAll();
+        return repo.findAll();
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> findById(@PathVariable("id") Long id) {
-        Optional<User> user = userDAO.findById(id);
+        Optional<User> user = repo.findById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/create")
     public User create(@RequestBody User user) {
-        return userDAO.save(user);
+        return repo.save(user);
     }
 
     @PostMapping("/update")
     public ResponseEntity<?> update(@RequestBody User user) {
         if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
-        return userDAO.findById(user.getId()).map(record -> {
+        return repo.findById(user.getId()).map(record -> {
             record.setFields(user);
-            User updated = userDAO.save(record);
+            User updated = repo.save(record);
             return ResponseEntity.ok().body(updated);
         }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping(path ={"/delete/{id}"})
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        return userDAO.findById(id).map(record -> {
-            userDAO.deleteById(id);
+        return repo.findById(id).map(record -> {
+            repo.deleteById(id);
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping(path = "/name/{userName}")
     public ResponseEntity<?> findByUserName(@PathVariable("userName") String userName) {
-        User user = userDAO.findByUserName(userName);
+        User user = repo.findByUserName(userName);
         if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

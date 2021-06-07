@@ -13,24 +13,24 @@ import java.util.Optional;
 @RequestMapping(value = "/question")
 public class QuestionController {
 
-    private final QuestionRepository questionDAO;
+    private final QuestionRepository repo;
 
-    public QuestionController(QuestionRepository questionDAO) {
-        this.questionDAO = questionDAO;
+    public QuestionController(QuestionRepository repo) {
+        this.repo = repo;
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> findById(@PathVariable("id") Long id) {
-        Optional<Question> question = questionDAO.findById(id);
+        Optional<Question> question = repo.findById(id);
         return new ResponseEntity<>(question, HttpStatus.OK);
     }
 
     @PostMapping("/create")
     public Question create(@RequestBody QuestionModel model) {
-        return questionDAO.save(new Question(model));
+        return repo.save(new Question(model));
     }
 
     public Question getById(Long id) {
-        return questionDAO.findById(id).orElse(null);
+        return repo.findById(id).orElse(null);
     }
 }
