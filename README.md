@@ -8,6 +8,11 @@
 
 Nota: Lembre-se de importar como `Maven Project`
 
+```
+Comando para criar o banco de dados:
+-> CREATE DATABASE pac CHARACTER SET utf8 COLLATE utf8_general_ci;
+```
+
 ###Rotas:
 
 ```

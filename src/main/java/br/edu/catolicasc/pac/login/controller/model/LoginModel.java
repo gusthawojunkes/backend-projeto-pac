@@ -2,8 +2,10 @@ package br.edu.catolicasc.pac.login.controller.model;
 
 import br.edu.catolicasc.utils.Utils;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class LoginModel {
 
     private String login;
@@ -11,6 +13,7 @@ public class LoginModel {
     private String token;
 
     public Boolean isValid() {
-        return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password) && !Utils.isEmpty(this.token);
+        //return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password) && !Utils.isEmpty(this.token);
+        return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password);
     }
 }
