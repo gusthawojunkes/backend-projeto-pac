@@ -1,5 +1,6 @@
 package br.edu.catolicasc.pac.config.uf;
 
+import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class UF {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class UF extends AbstractEntity {
 
     @Column(length = 2)
     private String uf;

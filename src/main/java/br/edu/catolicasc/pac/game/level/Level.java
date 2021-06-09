@@ -1,5 +1,6 @@
 package br.edu.catolicasc.pac.game.level;
 
+import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Level {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Level extends AbstractEntity {
 
     @Column(nullable = false, length = 100)
     private char title;

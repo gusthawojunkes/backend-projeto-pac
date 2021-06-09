@@ -4,6 +4,7 @@ import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.game.answer.Answer;
+import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class User {
+public class User extends AbstractEntity {
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -37,10 +38,6 @@ public class User {
         this.points = model.getPoints();
         this.birth = SDF.parse(model.getBirth());
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(nullable = false, length = 70)
     private String name;

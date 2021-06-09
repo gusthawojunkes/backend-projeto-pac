@@ -37,8 +37,4 @@ public abstract class AbstractEntity implements Serializable {
         setUpdatedAt(new Date());
     }
 
-    public abstract Long getId();
-
-    public abstract void setId(Long id);
-
 }

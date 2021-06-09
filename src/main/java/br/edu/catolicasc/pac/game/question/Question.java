@@ -3,6 +3,7 @@ package br.edu.catolicasc.pac.game.question;
 import br.edu.catolicasc.pac.game.alternatives.Alternative;
 import br.edu.catolicasc.pac.game.level.Level;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
+import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Question {
+public class Question extends AbstractEntity {
 
     public Question(QuestionModel model) {
         this.title = model.getTitle();
@@ -27,10 +28,6 @@ public class Question {
         this.correctResponse = model.getCorrectResponse();
         this.alternatives = model.getAlternatives();
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(nullable = false, length = 50)
     private String title;
@@ -45,12 +42,6 @@ public class Question {
 
 //    @OneToOne
 //    private User owner;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
     @Column(nullable = false, length = 1)
     private char correctResponse;
