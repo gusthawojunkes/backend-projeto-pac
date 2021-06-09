@@ -1,12 +1,14 @@
 package br.edu.catolicasc.pac.config.user.controller;
 
 import br.edu.catolicasc.pac.config.user.User;
+import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.Optional;
 
 @RestController
@@ -32,8 +34,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public User create(@RequestBody User user) {
-        return repo.save(user);
+    public User create(@RequestBody UserModel model) throws ParseException {
+        return repo.save(new User(model));
     }
 
     @PostMapping("/update")

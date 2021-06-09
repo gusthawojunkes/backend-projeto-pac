@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/question")
+@RequestMapping(value = "/questions")
 public class QuestionController {
 
     private final QuestionRepository repo;
 
     public QuestionController(QuestionRepository repo) {
         this.repo = repo;
+    }
+
+    @GetMapping
+    public Iterable<Question> findAll() {
+        return repo.findAll();
     }
 
     @GetMapping(path = "/{id}")

@@ -45,12 +45,13 @@ public class LoginController {
 
         if (userLogin == null) return false;
 
-        if (Utils.isEmpty(userLogin.getUserToken())) return false;
+        //TODO implementação do TOKEN fica para depois
+        //if (Utils.isEmpty(userLogin.getUserToken())) return false;
 
+        //String token = model.getToken();
         String password = model.getPassword();
-        String token = model.getToken();
-
-        return userLogin.getPassword().equals(password) && userLogin.getUserToken().equals(token);
+        return userLogin.getPassword().equals(password);
+        //return userLogin.getPassword().equals(password) && userLogin.getUserToken().equals(token);
 
     }
 

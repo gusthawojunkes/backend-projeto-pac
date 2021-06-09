@@ -38,8 +38,10 @@ public class Question {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne
-    private Level level;
+    private Integer level;
+
+//    @ManyToOne
+//    private Level level;
 
 //    @OneToOne
 //    private User owner;
@@ -53,10 +55,8 @@ public class Question {
     @Column(nullable = false, length = 1)
     private char correctResponse;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Alternative> alternatives;
-
-    private Integer points;
 
 }
