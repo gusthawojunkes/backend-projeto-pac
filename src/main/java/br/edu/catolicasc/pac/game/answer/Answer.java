@@ -18,7 +18,7 @@ public class Answer {
     @Column(nullable = false, length = 1)
     private char answer;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "answer")
-    private User students;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private User student;
 
 }

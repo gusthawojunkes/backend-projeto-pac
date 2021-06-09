@@ -1,7 +1,16 @@
 package br.edu.catolicasc.pac.game.level;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Level {
 
@@ -10,9 +19,10 @@ public class Level {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String title;
+    private char title;
 
-    @Column
     private String description;
+
+    private Integer points;
 
 }

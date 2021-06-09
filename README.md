@@ -28,6 +28,10 @@ UserController: /users
 Path: /create
 Method: POST
 Consumes: application/json
+---------------------- 
+Path: /update
+Method: POST
+Consumes: application/json
 ----------------------
 Path: /delete/{id}
 Method: DELETE
@@ -38,4 +42,7 @@ Method: GET
 Path: /{id}
 Method: GET
 ```
-    
+
+###Cadastros no geral
+
+Formatação da data: `dd/MM/yyyy`

@@ -1,7 +1,6 @@
 package br.edu.catolicasc.pac.game.question.model;
 
 import br.edu.catolicasc.pac.game.alternatives.Alternative;
-import br.edu.catolicasc.pac.game.level.Level;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,14 +14,12 @@ public class QuestionModel {
 
     private String description;
 
-    private Level level;
+    private Integer level;
 
 //    private User owner;
 
     private char correctResponse;
 
     private List<Alternative> alternatives;
-
-    private Integer points;
 
 }

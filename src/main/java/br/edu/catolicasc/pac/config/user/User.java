@@ -36,7 +36,6 @@ public class User {
         this.userToken = model.getUserToken();
         this.points = model.getPoints();
         this.birth = SDF.parse(model.getBirth());
-
     }
 
     @Id
@@ -55,6 +54,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String password;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date birth;
 
     @Column(length = 20)
@@ -76,8 +76,8 @@ public class User {
     @Column(length = 3)
     private Integer points;
 
-    @OneToOne
-    private Answer answer;
+//    @OneToOne
+//    private Answer answer;
 
     public void setFields(User user) {
         this.setName(user.getName());
