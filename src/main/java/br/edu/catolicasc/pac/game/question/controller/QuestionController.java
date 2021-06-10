@@ -30,7 +30,7 @@ public class QuestionController {
         return new ResponseEntity<>(question, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = "application/json")
     public Question create(@RequestBody QuestionModel model) {
         return repo.save(new Question(model));
     }

@@ -1,17 +1,14 @@
 package br.edu.catolicasc.pac.game.question;
 
-import br.edu.catolicasc.pac.game.alternatives.Alternative;
-import br.edu.catolicasc.pac.game.level.Level;
+import br.edu.catolicasc.pac.game.alternative.Alternative;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -46,8 +43,9 @@ public class Question extends AbstractEntity {
     @Column(nullable = false, length = 1)
     private char correctResponse;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "question_id")
     private List<Alternative> alternatives;
 
 }

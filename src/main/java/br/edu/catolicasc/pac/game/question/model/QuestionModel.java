@@ -1,6 +1,6 @@
 package br.edu.catolicasc.pac.game.question.model;
 
-import br.edu.catolicasc.pac.game.alternatives.Alternative;
+import br.edu.catolicasc.pac.game.alternative.Alternative;
 import lombok.Getter;
 import lombok.Setter;
 
