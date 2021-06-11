@@ -1,6 +1,8 @@
 package br.edu.catolicasc.pac.game.question.model;
 
 import br.edu.catolicasc.pac.game.alternative.Alternative;
+import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +22,7 @@ public class QuestionModel {
 
     private char correctResponse;
 
-    private List<Alternative> alternatives;
+    @JsonProperty("alternatives")
+    private List<AlternativeModel> alternatives;
 
 }

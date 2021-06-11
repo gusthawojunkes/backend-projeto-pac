@@ -1,6 +1,7 @@
 package br.edu.catolicasc.pac.game.question;
 
 import br.edu.catolicasc.pac.game.alternative.Alternative;
+import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class Question extends AbstractEntity {
         this.level = model.getLevel();
 //        this.owner = model.getOwner();
         this.correctResponse = model.getCorrectResponse();
-        this.alternatives = model.getAlternatives();
+        this.alternatives = getListFromModel(model.getAlternatives());
     }
 
     @Column(nullable = false, length = 50)
@@ -47,5 +48,16 @@ public class Question extends AbstractEntity {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Alternative> alternatives;
+
+    private List<Alternative> getListFromModel(List<AlternativeModel> listModel) {
+        List<Alternative> listReturn = new ArrayList<Alternative>();
+
+        for(AlternativeModel alternative : listModel) {
+            Alternative newAlternative = new Alternative(alternative);
+            listReturn.add(newAlternative);
+        }
+
+        return listReturn;
+    }
 
 }

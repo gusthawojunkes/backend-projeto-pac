@@ -2,7 +2,7 @@ package br.edu.catolicasc.pac.game.question.controller;
 
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
-import br.edu.catolicasc.pac.repository.user.QuestionRepository;
+import br.edu.catolicasc.pac.repository.game.QuestionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
