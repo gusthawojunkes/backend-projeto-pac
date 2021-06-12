@@ -33,6 +33,7 @@ public class Question extends AbstractEntity {
     @Column(nullable = false)
     private String description;
 
+    @Column(length = 1)
     private Integer level;
 
 //    @ManyToOne

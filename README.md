@@ -41,6 +41,57 @@ Method: GET
 ----------------------
 Path: /{id}
 Method: GET
+Produces: application/json
+```
+```
+QuestionController: /questions
+---------------------- 
+Path: /create
+Method: POST
+Consumes: application/json
+Expected (example): 
+
+/*
+    title: VARCHAR(50)
+    description: VARCHAR(255)
+    level: INTEGER(1)
+    correctResponse: CHAR
+    alternatives.option: CHAR
+    alternatives.description: VARCHAR(255)
+*/
+
+{
+    "title": "Questão 1", 
+    "description": "1 + 1", 
+    "level": 1, 
+    "correctResponse": "A", 
+    "alternatives": [
+        {
+            "option": "A", 
+            "description": "2" 
+        },
+        {
+            "option": "B",
+            "description": "3"
+        },
+        {
+            "option": "C",
+            "description": "4"
+        },
+        {
+            "option": "D",
+            "description": "5"
+        },
+        {
+            "option": "E",
+            "description": "6"
+        }
+    ]
+}
+----------------------
+Path: /{id}
+Method: GET
+Produces: application/json
 ```
 
 ### Cadastros no geral
