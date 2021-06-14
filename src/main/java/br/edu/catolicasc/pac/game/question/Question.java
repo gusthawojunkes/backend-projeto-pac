@@ -61,4 +61,18 @@ public class Question extends AbstractEntity {
         return listReturn;
     }
 
+    public static QuestionModel getModel(Question question) {
+        List<AlternativeModel> listAlternatives = new ArrayList<>();
+        QuestionModel model = new QuestionModel();
+        model.setTitle(question.getTitle());
+        model.setDescription(question.getDescription());
+        model.setLevel(question.getLevel());
+        model.setCorrectResponse(question.getCorrectResponse());
+        for (Alternative alternative : question.getAlternatives()) {
+            listAlternatives.add(new AlternativeModel(alternative));
+        }
+        model.setAlternatives(listAlternatives);
+        return model;
+    }
+
 }

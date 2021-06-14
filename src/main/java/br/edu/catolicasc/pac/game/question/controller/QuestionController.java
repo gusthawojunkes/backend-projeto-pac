@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,8 +22,13 @@ public class QuestionController {
     }
 
     @GetMapping
-    public Iterable<Question> findAll() {
-        return repo.findAll();
+    public List<QuestionModel> findAll() {
+        List<QuestionModel> listRet = new ArrayList<>();
+        Iterable<Question> questions = repo.findAll();
+        for (Question question : questions) {
+            listRet.add(Question.getModel(question));
+        }
+        return listRet;
     }
 
     @GetMapping(path = "/{id}")
