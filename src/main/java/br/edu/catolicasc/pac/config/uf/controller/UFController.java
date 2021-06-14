@@ -1,7 +1,7 @@
 package br.edu.catolicasc.pac.config.uf.controller;
 
 import br.edu.catolicasc.pac.config.uf.UF;
-import br.edu.catolicasc.pac.repository.game.UFRepository;
+import br.edu.catolicasc.pac.repository.config.UFRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

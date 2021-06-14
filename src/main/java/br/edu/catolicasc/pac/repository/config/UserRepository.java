@@ -1,4 +1,4 @@
-package br.edu.catolicasc.pac.repository.user;
+package br.edu.catolicasc.pac.repository.config;
 
 import br.edu.catolicasc.pac.config.user.User;
 import org.springframework.data.jpa.repository.Query;

@@ -3,7 +3,6 @@ package br.edu.catolicasc.pac.config.user;
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
-import br.edu.catolicasc.pac.game.answer.Answer;
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;

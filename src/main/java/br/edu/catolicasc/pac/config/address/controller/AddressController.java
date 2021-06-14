@@ -2,8 +2,7 @@ package br.edu.catolicasc.pac.config.address.controller;
 
 
 import br.edu.catolicasc.pac.config.address.Address;
-import br.edu.catolicasc.pac.config.uf.UF;
-import br.edu.catolicasc.pac.repository.game.AddressRepository;
+import br.edu.catolicasc.pac.repository.config.AddressRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

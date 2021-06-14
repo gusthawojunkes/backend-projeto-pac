@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/alternatives")
+@RequestMapping("/alternatives")
 public class AlternativeController {
 
     private final AlternativeRepository repo;

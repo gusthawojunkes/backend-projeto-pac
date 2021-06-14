@@ -2,8 +2,7 @@ package br.edu.catolicasc.pac.login.controller;
 
 import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.login.controller.model.LoginModel;
-import br.edu.catolicasc.pac.repository.user.UserRepository;
-import br.edu.catolicasc.utils.Utils;
+import br.edu.catolicasc.pac.repository.config.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

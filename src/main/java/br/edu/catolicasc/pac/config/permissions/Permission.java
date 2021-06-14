@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Permissions extends AbstractEntity {
+public class Permission extends AbstractEntity {
 
     @Column(nullable = false, unique = true)
     private String code;

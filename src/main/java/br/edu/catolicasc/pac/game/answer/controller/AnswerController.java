@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/answer")
+@RequestMapping("/answers")
 public class AnswerController {
 
-    private QuestionController questionDAO;
+    private final QuestionController questionDAO;
+
+    public AnswerController(QuestionController questionDAO) {
+        this.questionDAO = questionDAO;
+    }
 
     @PostMapping
     public Boolean correctAnswer(@RequestBody AnswerModel answer) {

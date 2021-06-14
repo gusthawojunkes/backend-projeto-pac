@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/questions")
+@RequestMapping("/questions")
 public class QuestionController {
 
     private final QuestionRepository repo;
