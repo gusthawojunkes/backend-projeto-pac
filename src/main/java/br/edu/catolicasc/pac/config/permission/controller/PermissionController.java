@@ -1,4 +1,4 @@
-package br.edu.catolicasc.pac.config.permissions.controller;
+package br.edu.catolicasc.pac.config.permission.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
