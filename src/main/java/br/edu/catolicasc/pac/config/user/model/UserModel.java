@@ -28,7 +28,7 @@ public class UserModel {
 
     private String birth;
 
-    private String fone;
+    private String phone;
 
     private Integer flagMaster;
 

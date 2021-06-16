@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/users")
 public class UserController {

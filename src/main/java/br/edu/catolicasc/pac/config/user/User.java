@@ -30,7 +30,7 @@ public class User extends AbstractEntity {
         this.email = model.getEmail();
         this.userName = model.getUserName();
         this.password = model.getPassword();
-        this.fone = model.getFone();
+        this.phone = model.getPhone();
         this.flagMaster = model.getFlagMaster();
         this.extraTime = model.getExtraTime();
         this.userToken = model.getUserToken();
@@ -54,7 +54,7 @@ public class User extends AbstractEntity {
     private Date birth;
 
     @Column(length = 20)
-    private String fone;
+    private String phone;
 
     @Column(length = 1)
     private Integer flagMaster;
@@ -78,7 +78,7 @@ public class User extends AbstractEntity {
         this.setUserName(user.getUserName());
         this.setPassword(user.getPassword());
         this.setBirth(user.getBirth());
-        this.setFone(user.getFone());
+        this.setPhone(user.getPhone());
     }
 
     @PrePersist
