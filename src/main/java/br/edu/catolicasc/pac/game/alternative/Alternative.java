@@ -31,7 +31,6 @@ public class Alternative extends AbstractEntity {
     @Column(nullable = false)
     private String description;
 
-    //TODO Revisar isso
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;

@@ -55,6 +55,7 @@ public class UserModel {
 
     private void setAddress(Address address) {
         AddressModel model = this.address;
+        if(model == null) return;
         UF uf = address.getUf();
         model.setCity(StringUtils.isNotBlank(address.getCity()) ? address.getCity() : "");
         if (uf != null) {
@@ -64,6 +65,7 @@ public class UserModel {
     }
 
     private void setGroup(UserGroup group) {
+        if (group == null) return;
         UserGroupModel model = new UserGroupModel();
         Permission permission = group.getPermission();
         Action action = group.getAction();
