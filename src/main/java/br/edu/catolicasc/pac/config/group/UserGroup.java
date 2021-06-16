@@ -1,5 +1,7 @@
 package br.edu.catolicasc.pac.config.group;
 
+import br.edu.catolicasc.pac.config.action.Action;
+import br.edu.catolicasc.pac.config.permission.Permission;
 import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +18,11 @@ public class UserGroup extends AbstractEntity {
 
     @Column(nullable = false, length = 100)
     private String description;
+
+    @OneToOne
+    private Permission permission;
+
+    @OneToOne
+    private Action action;
 
 }

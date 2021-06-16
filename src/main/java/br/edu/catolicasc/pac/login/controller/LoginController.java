@@ -1,6 +1,7 @@
 package br.edu.catolicasc.pac.login.controller;
 
 import br.edu.catolicasc.pac.config.user.User;
+import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.login.controller.model.LoginModel;
 import br.edu.catolicasc.pac.repository.config.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ public class LoginController {
     * */
 
     private final UserRepository userDAO;
+    private User userLogin;
 
     public LoginController(UserRepository userDAO) {
         this.userDAO = userDAO;
@@ -28,8 +30,8 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<?> login(LoginModel login) {
         Boolean authenticated = authenticate(login);
-        HttpStatus statusCode = authenticated ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
-        return new ResponseEntity<>(authenticated, statusCode);
+        if (!authenticated) return new ResponseEntity<>(false, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(UserModel.getModelFromUser(this.userLogin), HttpStatus.OK);
     }
 
     private Boolean authenticate(LoginModel model) {
@@ -40,7 +42,7 @@ public class LoginController {
         if (!model.isValid()) return false;
 
         String userName = model.getLogin();
-        User userLogin = userDAO.findByUserName(userName);
+        this.userLogin = userDAO.findByUserName(userName);
 
         if (userLogin == null) return false;
 

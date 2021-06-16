@@ -72,9 +72,6 @@ public class User extends AbstractEntity {
     @Column(length = 3)
     private Integer points;
 
-//    @OneToOne
-//    private Answer answer;
-
     public void setFields(User user) {
         this.setName(user.getName());
         this.setEmail(user.getEmail());
