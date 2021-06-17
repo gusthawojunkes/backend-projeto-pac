@@ -36,6 +36,8 @@ public class User extends AbstractEntity {
         this.userToken = model.getUserToken();
         this.points = model.getPoints();
         this.birth = SDF.parse(model.getBirth());
+        this.group = new UserGroup(model.getGroup());
+        this.address = new Address(model.getAddress());
     }
 
     @Column(nullable = false, length = 70)

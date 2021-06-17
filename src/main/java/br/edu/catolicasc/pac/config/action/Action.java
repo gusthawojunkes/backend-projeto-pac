@@ -1,14 +1,27 @@
 package br.edu.catolicasc.pac.config.action;
 
 
+import br.edu.catolicasc.pac.config.action.model.ActionModel;
 import br.edu.catolicasc.utils.AbstractEntity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 
+@NoArgsConstructor
 @Setter
 @Entity
 public class Action extends AbstractEntity {
+
+    public Action(ActionModel model) {
+        this.confChallenges = model.getConfChallenges();
+        this.playChallenges = model.getPlayChallenges();
+        this.confUsers = model.getConfUsers();
+        this.viewUsers = model.getViewUsers();
+        this.confGroups = model.getConfGroups();
+        this.viewGroups = model.getViewGroups();
+    }
 
     private Integer confChallenges;
 

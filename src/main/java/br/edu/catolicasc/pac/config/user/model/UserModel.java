@@ -50,6 +50,9 @@ public class UserModel {
         model.setAddress(user.getAddress());
         model.setGroup(user.getGroup());
         model.setPoints(user.getPoints());
+        model.setGroup(user.getGroup());
+        model.setPhone(user.getPhone());
+        model.setEmail(user.getEmail());
         return model;
     }
 
