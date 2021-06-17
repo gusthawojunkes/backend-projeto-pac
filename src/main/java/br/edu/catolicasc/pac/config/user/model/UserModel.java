@@ -10,6 +10,7 @@ import br.edu.catolicasc.pac.config.permission.Permission;
 import br.edu.catolicasc.pac.config.permission.model.PermissionModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -36,8 +37,10 @@ public class UserModel {
 
     private String userToken;
 
+    @JsonProperty("address")
     private AddressModel address;
 
+    @JsonProperty("group")
     private UserGroupModel group;
 
     private Integer points;
