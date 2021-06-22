@@ -30,12 +30,16 @@ public class Permission extends AbstractEntity {
     @Column(nullable = false)
     private String description;
 
+    @Column(length = 1)
     private Integer viewChallenges;
 
+    @Column(length = 1)
     private Integer viewRanking;
 
+    @Column(length = 1)
     private Integer viewReports;
 
+    @Column(length = 1)
     private Integer viewConfig;
 
     public Integer getViewChallenges() {

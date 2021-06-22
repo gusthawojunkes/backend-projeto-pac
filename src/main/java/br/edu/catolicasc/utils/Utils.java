@@ -40,4 +40,21 @@ public class Utils {
         }
 
     }
+
+    public static class Phone {
+
+        private static final String PHONE_PATTERN = "^\\(?[1-9]{2}\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$";
+
+        private static final Pattern pattern = Pattern.compile(PHONE_PATTERN, Pattern.CASE_INSENSITIVE);
+
+        public static Boolean isValid(String phone) {
+            Matcher matcher = pattern.matcher(phone);
+            return matcher.matches();
+        }
+
+        public static Boolean isNotValid(String phone) {
+            return !isValid(phone);
+        }
+
+    }
 }

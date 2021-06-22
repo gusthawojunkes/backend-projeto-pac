@@ -3,14 +3,14 @@ package br.edu.catolicasc.pac.config.group;
 import br.edu.catolicasc.pac.config.action.Action;
 import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
 import br.edu.catolicasc.pac.config.permission.Permission;
-import br.edu.catolicasc.pac.config.permission.model.PermissionModel;
 import br.edu.catolicasc.utils.AbstractEntity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @NoArgsConstructor
 @Getter

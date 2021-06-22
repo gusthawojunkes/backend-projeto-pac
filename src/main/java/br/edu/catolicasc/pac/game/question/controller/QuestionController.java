@@ -31,7 +31,7 @@ public class QuestionController {
         return listRet;
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable("id") Long id) {
         Optional<Question> question = repo.findById(id);
         return new ResponseEntity<>(question, HttpStatus.OK);
@@ -44,5 +44,15 @@ public class QuestionController {
 
     public Question getById(Long id) {
         return repo.findById(id).orElse(null);
+    }
+
+    @GetMapping("/level/{level}")
+    public List<QuestionModel> getQuestionsByLevel(@PathVariable("level") Integer level) {
+        List<QuestionModel> listReturn = new ArrayList<QuestionModel>();
+        Iterable<Question> questions = repo.getQuestionByLevel(level);
+        for (Question question : questions) {
+            listReturn.add(Question.getModel(question));
+        }
+        return listReturn;
     }
 }

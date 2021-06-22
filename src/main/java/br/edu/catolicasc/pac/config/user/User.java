@@ -85,9 +85,10 @@ public class User extends AbstractEntity {
 
     @PrePersist
     @PreUpdate
-    private void validateEmail() throws Exception {
-        String email = this.email;
-        if (StringUtils.isBlank(email) || Utils.Email.isNotValid(email)) throw new Exception("Invalid e-mail");
+    private void validate() throws Exception {
+        String phone = this.phone;
+        if (Utils.Email.isNotValid(this.email)) throw new Exception("Invalid e-mail");
+        if (StringUtils.isBlank(phone) || Utils.Phone.isNotValid(phone)) throw new Exception("Invalid phone");
     }
 
 }

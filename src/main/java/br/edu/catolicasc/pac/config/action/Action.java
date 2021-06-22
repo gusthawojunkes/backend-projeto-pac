@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @NoArgsConstructor
@@ -23,16 +24,22 @@ public class Action extends AbstractEntity {
         this.viewGroups = model.getViewGroups();
     }
 
+    @Column(length = 1)
     private Integer confChallenges;
 
+    @Column(length = 1)
     private Integer playChallenges;
 
+    @Column(length = 1)
     private Integer confUsers;
 
+    @Column(length = 1)
     private Integer viewUsers;
 
+    @Column(length = 1)
     private Integer confGroups;
 
+    @Column(length = 1)
     private Integer viewGroups;
 
     public Integer getConfChallenges() {
