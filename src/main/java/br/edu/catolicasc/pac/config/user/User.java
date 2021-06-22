@@ -36,8 +36,8 @@ public class User extends AbstractEntity {
         this.userToken = model.getUserToken();
         this.points = model.getPoints();
         this.birth = SDF.parse(model.getBirth());
-        this.group = new UserGroup(model.getGroup());
-        this.address = new Address(model.getAddress());
+        if (model.getGroup() != null) this.group = new UserGroup(model.getGroup());
+        if (model.getAddress() != null) this.address = new Address(model.getAddress());
     }
 
     @Column(nullable = false, length = 70)
@@ -71,8 +71,8 @@ public class User extends AbstractEntity {
     @OneToOne
     private UserGroup group;
 
-    @Column(length = 3)
-    private Integer points;
+    @Column(length = 9)
+    private Integer points = 0;
 
     public void setFields(User user) {
         this.setName(user.getName());

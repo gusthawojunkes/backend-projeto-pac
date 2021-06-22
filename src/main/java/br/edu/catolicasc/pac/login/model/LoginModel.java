@@ -1,4 +1,4 @@
-package br.edu.catolicasc.pac.login.controller.model;
+package br.edu.catolicasc.pac.login.model;
 
 import br.edu.catolicasc.utils.Utils;
 import lombok.Getter;

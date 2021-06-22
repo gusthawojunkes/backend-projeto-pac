@@ -3,7 +3,6 @@ package br.edu.catolicasc.pac.config.action;
 
 import br.edu.catolicasc.pac.config.action.model.ActionModel;
 import br.edu.catolicasc.utils.AbstractEntity;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 

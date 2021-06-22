@@ -21,11 +21,12 @@ LoginController: /login
 Path: /login
 Method: POST
 Consumes: application/json
+Produces: application/json
 ```
 ```
 UserController: /users
 ---------------------- 
-Path: /create
+Path: /create 
 Method: POST
 Consumes: application/json
 Expected (example):
@@ -115,6 +116,10 @@ Method: GET
 Path: /{id}
 Method: GET
 Produces: application/json
+----------------------
+Path: /ranking
+Method: GET
+Produces: Produces: application/json
 ```
 ```
 QuestionController: /questions
