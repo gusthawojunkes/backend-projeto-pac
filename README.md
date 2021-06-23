@@ -182,6 +182,52 @@ Path: /{id}
 Method: GET
 Produces: application/json
 ```
+```
+UserGroupController: /groups
+---------------------- 
+Path: /create 
+Method: POST
+Consumes: application/json
+Expected (example):
+
+/*
+    name: VARCHAR(30)
+    description: VARCHAR(100)
+    permission.code: VARCHAR(255)
+    permission.description: VARCHAR(255)
+    permission.viewChallenges: INT(1)
+    permission.viewRanking: INT(1)
+    permission.viewReports: INT(1)
+    permission.viewConfig: INT(1)
+    action.confChallenges: INT(1)
+    action.playChallenges: INT(1)
+    action.confUsers: INT(1)
+    action.viewUsers: INT(1)
+    action.confGroups: INT(1)
+    action.viewGroups: INT(1)
+*/
+
+{
+    "name": "Dev",
+    "description": "Developers",
+    "permission": {
+        "code": "A",
+        "description": "Developers",
+        "viewChallenges": 1,
+        "viewRanking": 1,
+        "viewReports": 1,
+        "viewConfig": 1
+    },
+    "action": {
+        "confChallenges": 1,
+        "playChallenges": 1,
+        "confUsers": 1,
+        "viewUsers": 1,
+        "confGroups": 1,
+        "viewGroups": 1
+    }
+}
+```
 
 ### Formatação
 
