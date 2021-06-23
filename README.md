@@ -1,4 +1,13 @@
-# REST API para o projeto do PAC (Terceiro semestre)
+<h1 align="center">
+REST API para o projeto do PAC (Terceiro semestre) :chess_pawn:
+</h1>
+
+<p align="center">
+<b>Tecnologias</b> |
+<b>Como executar</b> |
+<b>Rotas</b> |
+<b>Formatação</b>
+</p>
 
 ### Tecnologias:
 
@@ -6,12 +15,14 @@
 - `MySQL 8`
 - `JDK 15.0.2`
 
-Nota: Lembre-se de importar como `Maven Project`
-
-```
-Comando para criar o banco de dados:
--> CREATE DATABASE pac CHARACTER SET utf8 COLLATE utf8_general_ci;
-```
+### Passos para rodar a aplicação:
+1. Clonar o projeto
+2. Importar em uma IDE (Eclipse, IntelliJ, etc.) como um `Maven Project`
+3. Instalar plugins necessários compatíveis com o SpringBoot (Spring Tools 4 no caso do Eclipse)
+4. Criar base de dados chamada `pac` |
+``CREATE DATABASE pac CHARACTER SET utf8 COLLATE utf8_general_ci;``
+5. Subir uma instância do banco de dados criado
+6. Subir a aplicação pela IDE via plugin ou linha de comando segundo a documentação oficial [https://spring.io/quickstart]
 
 ### Rotas:
 
@@ -172,6 +183,6 @@ Method: GET
 Produces: application/json
 ```
 
-### Cadastros no geral
+### Formatação
 
 Formatação da data: `dd/MM/yyyy`
