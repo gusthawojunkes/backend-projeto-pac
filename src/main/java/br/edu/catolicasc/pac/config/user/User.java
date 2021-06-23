@@ -34,7 +34,7 @@ public class User extends AbstractEntity {
         this.flagMaster = model.getFlagMaster();
         this.extraTime = model.getExtraTime();
         this.userToken = model.getUserToken();
-        this.points = model.getPoints();
+        this.points = model.getPoints() != null ? model.getPoints() : 0;
         this.birth = SDF.parse(model.getBirth());
         if (model.getGroup() != null) this.group = new UserGroup(model.getGroup());
         if (model.getAddress() != null) this.address = new Address(model.getAddress());

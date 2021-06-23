@@ -74,10 +74,13 @@ public class UserController {
         List<Ranking> listReturn = new ArrayList<>();
         List<User> users = (List<User>) repo.findAll();
         AtomicInteger count = new AtomicInteger(1);
-        users.stream().sorted(Comparator.comparing(User::getPoints).reversed()).forEach(user -> {
-            Ranking record = new Ranking(count.getAndIncrement(), user.getName(), user.getPoints());
-            listReturn.add(record);
-        });
+        users.stream()
+             .filter(user -> user.getPoints() != null)
+             .sorted(Comparator.comparing(User::getPoints).reversed())
+             .forEach(user -> {
+                 Ranking record = new Ranking(count.getAndIncrement(), user.getName(), user.getPoints());
+                 listReturn.add(record);
+             });
         return listReturn;
     }
 
