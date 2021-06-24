@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.text.ParseException;
@@ -65,10 +66,10 @@ public class User extends AbstractEntity {
 
     private String userToken;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UserGroup group;
 
     @Column(length = 9)

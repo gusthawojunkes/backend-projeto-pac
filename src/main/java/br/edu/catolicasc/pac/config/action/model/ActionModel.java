@@ -9,47 +9,47 @@ import lombok.Setter;
 public class ActionModel {
 
     public ActionModel(Action action) {
-        this.confChallenges = action.getConfChallenges();
-        this.playChallenges = action.getPlayChallenges();
-        this.confUsers = action.getConfUsers();
-        this.viewUsers = action.getViewUsers();
-        this.confGroups = action.getConfGroups();
-        this.viewGroups = action.getViewGroups();
+        this.confChallenges = action.getConfChallenges() != null && action.getConfChallenges() == 1;
+        this.playChallenges = action.getPlayChallenges() != null && action.getPlayChallenges() == 1;
+        this.confUsers = action.getConfUsers() != null && action.getConfUsers() == 1;
+        this.viewUsers = action.getViewUsers() != null && action.getViewUsers() == 1;
+        this.confGroups = action.getConfGroups() != null && action.getConfGroups() == 1;
+        this.viewGroups = action.getViewGroups() != null && action.getViewGroups() == 1;
     }
 
-    private Integer confChallenges;
+    private Boolean confChallenges;
 
-    private Integer playChallenges;
+    private Boolean playChallenges;
 
-    private Integer confUsers;
+    private Boolean confUsers;
 
-    private Integer viewUsers;
+    private Boolean viewUsers;
 
-    private Integer confGroups;
+    private Boolean confGroups;
 
-    private Integer viewGroups;
+    private Boolean viewGroups;
 
-    public Integer getConfChallenges() {
-        return confChallenges != null ? confChallenges : 0;
+    public Boolean getConfChallenges() {
+        return confChallenges != null ? confChallenges : false;
     }
 
-    public Integer getPlayChallenges() {
-        return playChallenges != null ? playChallenges : 0;
+    public Boolean getPlayChallenges() {
+        return playChallenges != null ? playChallenges : false;
     }
 
-    public Integer getConfUsers() {
-        return confUsers != null ? confUsers : 0;
+    public Boolean getConfUsers() {
+        return confUsers != null ? confUsers : false;
     }
 
-    public Integer getViewUsers() {
-        return viewUsers != null ? viewUsers : 0;
+    public Boolean getViewUsers() {
+        return viewUsers != null ? viewUsers : false;
     }
 
-    public Integer getConfGroups() {
-        return confGroups != null ? confGroups : 0;
+    public Boolean getConfGroups() {
+        return confGroups != null ? confGroups : false;
     }
 
-    public Integer getViewGroups() {
-        return viewGroups != null ? viewGroups : 0;
+    public Boolean getViewGroups() {
+        return viewGroups != null ? viewGroups : false;
     }
 }

@@ -23,7 +23,7 @@ public class Address extends AbstractEntity {
     @Column(length = 60)
     private String city;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private UF uf;
 
 }

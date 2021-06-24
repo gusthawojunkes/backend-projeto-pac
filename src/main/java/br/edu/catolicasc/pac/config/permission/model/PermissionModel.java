@@ -1,7 +1,6 @@
 package br.edu.catolicasc.pac.config.permission.model;
 
 import br.edu.catolicasc.pac.config.permission.Permission;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,39 +11,33 @@ import lombok.Setter;
 public class PermissionModel {
 
     public PermissionModel(Permission permission) {
-        this.code = permission.getCode();
-        this.description = permission.getDescription();
-        this.viewChallenges = permission.getViewChallenges();
-        this.viewRanking = permission.getViewRanking();
-        this.viewReports = permission.getViewReports();
-        this.viewConfig = permission.getViewConfig();
+        this.viewChallenges = permission.getViewChallenges() != null && permission.getViewChallenges() == 1;
+        this.viewRanking = permission.getViewRanking() != null && permission.getViewRanking() == 1;
+        this.viewReports = permission.getViewReports() != null && permission.getViewReports() == 1;
+        this.viewConfig = permission.getViewConfig() != null && permission.getViewConfig() == 1;
     }
 
-    private String code;
+    private Boolean viewChallenges;
 
-    private String description;
+    private Boolean viewRanking;
 
-    private Integer viewChallenges;
+    private Boolean viewReports;
 
-    private Integer viewRanking;
+    private Boolean viewConfig;
 
-    private Integer viewReports;
-
-    private Integer viewConfig;
-
-    public Integer getViewChallenges() {
-        return viewChallenges != null ? viewChallenges : 0;
+    public Boolean getViewChallenges() {
+        return viewChallenges != null ? viewChallenges : false;
     }
 
-    public Integer getViewRanking() {
-        return viewRanking != null ? viewRanking : 0;
+    public Boolean getViewRanking() {
+        return viewRanking != null ? viewRanking : false;
     }
 
-    public  Integer getViewReports() {
-        return  viewReports != null ? viewReports : 0;
+    public  Boolean getViewReports() {
+        return  viewReports != null ? viewReports : false;
     }
 
-    public Integer getViewConfig() {
-        return viewConfig != null ? viewConfig : 0;
+    public Boolean getViewConfig() {
+        return viewConfig != null ? viewConfig : false;
     }
 }

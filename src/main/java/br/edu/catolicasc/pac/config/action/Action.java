@@ -15,12 +15,12 @@ import javax.persistence.Entity;
 public class Action extends AbstractEntity {
 
     public Action(ActionModel model) {
-        this.confChallenges = model.getConfChallenges();
-        this.playChallenges = model.getPlayChallenges();
-        this.confUsers = model.getConfUsers();
-        this.viewUsers = model.getViewUsers();
-        this.confGroups = model.getConfGroups();
-        this.viewGroups = model.getViewGroups();
+        this.confChallenges = model.getConfChallenges() != null && model.getConfChallenges() ? 1 : 0;
+        this.playChallenges = model.getPlayChallenges() != null && model.getPlayChallenges() ? 1 : 0;
+        this.confUsers = model.getConfUsers() != null && model.getConfUsers() ? 1 : 0;
+        this.viewUsers = model.getViewUsers() != null && model.getViewUsers() ? 1 : 0;
+        this.confGroups = model.getConfGroups() != null && model.getConfGroups() ? 1 : 0;
+        this.viewGroups = model.getViewGroups() != null && model.getViewGroups() ? 1: 0;
     }
 
     @Column(length = 1)

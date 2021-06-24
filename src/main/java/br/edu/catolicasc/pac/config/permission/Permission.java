@@ -16,19 +16,11 @@ import javax.persistence.*;
 public class Permission extends AbstractEntity {
 
     public Permission(PermissionModel model) {
-        this.code = model.getCode();
-        this.description = model.getDescription();
-        this.viewChallenges = model.getViewChallenges();
-        this.viewRanking = model.getViewRanking();
-        this.viewReports = model.getViewReports();
-        this.viewConfig = model.getViewConfig();
+        this.viewChallenges = model.getViewChallenges() != null && model.getViewChallenges() ? 1 : 0;
+        this.viewRanking = model.getViewRanking() != null && model.getViewRanking() ? 1 : 0;
+        this.viewReports = model.getViewReports() != null && model.getViewReports() ? 1 : 0;
+        this.viewConfig = model.getViewConfig() != null && model.getViewConfig() ? 1 : 0;
     }
-
-    @Column(nullable = false, unique = true)
-    private String code;
-
-    @Column(nullable = false)
-    private String description;
 
     @Column(length = 1)
     private Integer viewChallenges;
