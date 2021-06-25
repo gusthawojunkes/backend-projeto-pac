@@ -211,8 +211,6 @@ Expected (example):
     "name": "Dev",
     "description": "Developers",
     "permission": {
-        "code": "A",
-        "description": "Developers",
         "viewChallenges": 1,
         "viewRanking": 1,
         "viewReports": 1,
@@ -227,6 +225,9 @@ Expected (example):
         "viewGroups": 1
     }
 }
+---------------------- 
+Path: /delete/{id} 
+Method: DELETE
 ```
 
 ### Formatação

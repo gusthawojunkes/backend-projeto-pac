@@ -2,10 +2,9 @@ package br.edu.catolicasc.pac.config.group.controller;
 
 import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
-import br.edu.catolicasc.pac.config.user.User;
-import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.repository.config.UserGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -38,5 +37,13 @@ public class UserGroupController {
     @PostMapping("/create")
     public UserGroup create(@RequestBody UserGroupModel model) throws ParseException {
         return repo.save(new UserGroup(model));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        return repo.findById(id).map(record -> {
+            repo.deleteById(id);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
     }
 }
