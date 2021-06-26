@@ -30,7 +30,7 @@ public class Question extends AbstractEntity {
     @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
     @Column(length = 1)
@@ -64,6 +64,7 @@ public class Question extends AbstractEntity {
     public static QuestionModel getModel(Question question) {
         List<AlternativeModel> listAlternatives = new ArrayList<>();
         QuestionModel model = new QuestionModel();
+        model.setId(question.getId());
         model.setTitle(question.getTitle());
         model.setDescription(question.getDescription());
         model.setLevel(question.getLevel());

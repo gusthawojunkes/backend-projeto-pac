@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.text.ParseException;
@@ -47,7 +46,7 @@ public class User extends AbstractEntity {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String userName;
 
     @Column(nullable = false, length = 50)

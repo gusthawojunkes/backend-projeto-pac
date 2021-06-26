@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 public class QuestionModel {
 
+    private Long id;
+
     private String title;
 
     private String description;

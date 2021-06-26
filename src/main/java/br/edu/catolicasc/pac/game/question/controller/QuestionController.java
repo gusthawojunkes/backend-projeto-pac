@@ -1,5 +1,7 @@
 package br.edu.catolicasc.pac.game.question.controller;
 
+import br.edu.catolicasc.pac.config.group.UserGroup;
+import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.pac.repository.game.QuestionRepository;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
@@ -44,6 +47,23 @@ public class QuestionController {
 
     public Question getById(Long id) {
         return repo.findById(id).orElse(null);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> update(@RequestBody QuestionModel question) {
+        if (question == null) return new ResponseEntity<>("Question not found", HttpStatus.NO_CONTENT);
+        return repo.findById(question.getId()).map(record -> {
+            Question updated = repo.save(record);
+            return ResponseEntity.ok().body(updated);
+        }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        return repo.findById(id).map(record -> {
+            repo.deleteById(id);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/level/{level}")

@@ -12,19 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/login")
 public class LoginController {
 
-    /*
-    * Esse bloco não deveria estar aqui segundo a arquitetura, mas por enquanto vou deixar aqui
-    * para trabalhar com o dado do login
-    * */
-
     private final UserRepository userDAO;
     private User userLogin;
 
     public LoginController(UserRepository userDAO) {
         this.userDAO = userDAO;
     }
-
-    //Até aqui
 
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping
