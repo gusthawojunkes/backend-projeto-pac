@@ -130,7 +130,7 @@ Produces: application/json
 ----------------------
 Path: /ranking
 Method: GET
-Produces: Produces: application/json
+Produces: application/json
 ```
 ```
 QuestionController: /questions
@@ -178,8 +178,24 @@ Expected (example):
     ]
 }
 ----------------------
+Path: /update
+Method: POST
+Consumes: application/json
+Produces: application/json
+Expected (example): Same of /create but with ID
+----------------------
+Path: /delete/{id}
+Method: DELETE
+Parameters: Question ID INT(1)
+----------------------
 Path: /{id}
 Method: GET
+Parameters: Question ID INT(1)
+Produces: application/json
+----------------------
+Path: /level/{level}
+Method: GET
+Parameters: Level INT(1)
 Produces: application/json
 ```
 ```
