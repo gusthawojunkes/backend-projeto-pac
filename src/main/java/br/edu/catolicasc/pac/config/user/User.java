@@ -3,6 +3,7 @@ package br.edu.catolicasc.pac.config.user;
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
+import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,6 +38,7 @@ public class User extends AbstractEntity {
         this.userToken = model.getUserToken();
         this.points = model.getPoints() != null ? model.getPoints() : 0;
         this.birth = SDF.parse(model.getBirth());
+        if (model.getQuestions() != null && !model.getQuestions().isEmpty()) this.questions = model.getQuestions();
         if (model.getGroup() != null) this.group = new UserGroup(model.getGroup());
         if (model.getAddress() != null) this.address = new Address(model.getAddress());
     }
@@ -73,6 +76,10 @@ public class User extends AbstractEntity {
 
     @Column(length = 9)
     private Integer points = 0;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Question> questions;
 
     public void setFields(User user) {
         this.setName(user.getName());

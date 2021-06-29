@@ -10,10 +10,13 @@ import br.edu.catolicasc.pac.config.permission.Permission;
 import br.edu.catolicasc.pac.config.permission.model.PermissionModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
+import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -44,6 +47,8 @@ public class UserModel {
     private UserGroupModel group;
 
     private Integer points;
+
+    private List<QuestionModel> questions;
 
     public static UserModel getModelFromUser(User user) {
         UserModel model = new UserModel();

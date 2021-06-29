@@ -1,5 +1,6 @@
 package br.edu.catolicasc.pac.game.question;
 
+import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.game.alternative.Alternative;
 import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
@@ -22,7 +23,7 @@ public class Question extends AbstractEntity {
         this.title = model.getTitle();
         this.description = model.getDescription();
         this.level = model.getLevel();
-//        this.owner = model.getOwner();
+        this.owner = model.getOwner();
         this.correctResponse = model.getCorrectResponse();
         this.alternatives = getListFromModel(model.getAlternatives());
     }
@@ -36,11 +37,9 @@ public class Question extends AbstractEntity {
     @Column(length = 1)
     private Integer level;
 
-//    @ManyToOne
-//    private Level level;
-
-//    @OneToOne
-//    private User owner;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User owner;
 
     @Column(nullable = false, length = 1)
     private char correctResponse;

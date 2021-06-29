@@ -1,5 +1,6 @@
 package br.edu.catolicasc.pac.game.question.model;
 
+import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class QuestionModel {
 
     private Integer level;
 
-//    private User owner;
+    private UserModel owner;
 
     private char correctResponse;
 
