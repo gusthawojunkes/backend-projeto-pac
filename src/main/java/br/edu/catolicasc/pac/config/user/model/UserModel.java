@@ -8,6 +8,7 @@ import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
 import br.edu.catolicasc.pac.config.permission.Permission;
 import br.edu.catolicasc.pac.config.permission.model.PermissionModel;
+import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
@@ -48,7 +49,11 @@ public class UserModel {
 
     private Integer points;
 
+    @JsonProperty("questions")
     private List<QuestionModel> questions;
+
+    @JsonProperty("school")
+    private SchoolModel school;
 
     public static UserModel getModelFromUser(User user) {
         UserModel model = new UserModel();

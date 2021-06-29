@@ -1,14 +1,11 @@
 package br.edu.catolicasc.pac.game.question.model;
 
 import br.edu.catolicasc.pac.config.user.model.UserModel;
-import br.edu.catolicasc.pac.game.alternative.Alternative;
 import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
-import br.edu.catolicasc.pac.game.question.Question;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter

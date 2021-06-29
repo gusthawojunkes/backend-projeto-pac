@@ -1,6 +1,7 @@
 package br.edu.catolicasc.pac.config.classroom.model;
 
 import br.edu.catolicasc.pac.config.classroom.Classroom;
+import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +10,11 @@ import lombok.Setter;
 public class ClassroomModel {
 
     public ClassroomModel(Classroom classroom) {
-        this.classroom = classroom.getName();
+        this.name = classroom.getName();
     }
 
-    private String classroom;
+    private String name;
+
+    private SchoolModel school;
 
 }

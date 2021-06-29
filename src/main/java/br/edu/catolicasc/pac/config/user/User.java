@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
@@ -46,6 +45,7 @@ public class User extends AbstractEntity {
         }
         if (model.getGroup() != null) this.group = new UserGroup(model.getGroup());
         if (model.getAddress() != null) this.address = new Address(model.getAddress());
+        if (model.getSchool() != null) this.school = new School(model.getSchool());
     }
 
     @Column(nullable = false, length = 70)
@@ -85,6 +85,9 @@ public class User extends AbstractEntity {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Question> questions;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private School school;
 
     public void setFields(User user) {
         this.setName(user.getName());
