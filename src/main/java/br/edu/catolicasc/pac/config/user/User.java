@@ -2,6 +2,7 @@ package br.edu.catolicasc.pac.config.user;
 
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.group.UserGroup;
+import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.utils.AbstractEntity;
@@ -10,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.*;
@@ -38,7 +41,9 @@ public class User extends AbstractEntity {
         this.userToken = model.getUserToken();
         this.points = model.getPoints() != null ? model.getPoints() : 0;
         this.birth = SDF.parse(model.getBirth());
-        if (model.getQuestions() != null && !model.getQuestions().isEmpty()) this.questions = model.getQuestions();
+        if (CollectionUtils.isNotEmpty(model.getQuestions())) {
+            this.questions = Question.getQuestionsByListModel(model.getQuestions());
+        }
         if (model.getGroup() != null) this.group = new UserGroup(model.getGroup());
         if (model.getAddress() != null) this.address = new Address(model.getAddress());
     }
@@ -98,4 +103,11 @@ public class User extends AbstractEntity {
         if (StringUtils.isBlank(phone) || Utils.Phone.isNotValid(phone)) throw new Exception("Invalid phone");
     }
 
+    public Boolean isStudent() {
+        return CollectionUtils.isEmpty(this.getQuestions());
+    }
+
+    public Boolean isTeacher() {
+        return !isStudent();
+    }
 }

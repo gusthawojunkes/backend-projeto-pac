@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +20,13 @@ import java.util.List;
 @Entity
 public class Question extends AbstractEntity {
 
-    public Question(QuestionModel model) {
+    public Question(QuestionModel model) throws ParseException {
         this.title = model.getTitle();
         this.description = model.getDescription();
         this.level = model.getLevel();
-        this.owner = model.getOwner();
+        this.owner = new User(model.getOwner());
         this.correctResponse = model.getCorrectResponse();
-        this.alternatives = getListFromModel(model.getAlternatives());
+        this.alternatives = getListAlternativesFromListModel(model.getAlternatives());
     }
 
     @Column(nullable = false, length = 50)
@@ -37,7 +38,7 @@ public class Question extends AbstractEntity {
     @Column(length = 1)
     private Integer level;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User owner;
 
@@ -49,8 +50,8 @@ public class Question extends AbstractEntity {
     @JoinColumn(name = "question_id")
     private List<Alternative> alternatives;
 
-    private List<Alternative> getListFromModel(List<AlternativeModel> listModel) {
-        List<Alternative> listReturn = new ArrayList<Alternative>();
+    private static List<Alternative> getListAlternativesFromListModel(List<AlternativeModel> listModel) {
+        List<Alternative> listReturn = new ArrayList<>();
 
         for(AlternativeModel alternative : listModel) {
             Alternative newAlternative = new Alternative(alternative);
@@ -73,6 +74,16 @@ public class Question extends AbstractEntity {
         }
         model.setAlternatives(listAlternatives);
         return model;
+    }
+
+    public static List<Question> getQuestionsByListModel(List<QuestionModel> questions) throws ParseException {
+        List<Question> listQuestions = new ArrayList<>();
+
+        for (QuestionModel question : questions) {
+            listQuestions.add(new Question(question));
+        }
+
+        return listQuestions;
     }
 
 }

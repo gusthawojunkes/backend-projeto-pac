@@ -1,7 +1,5 @@
 package br.edu.catolicasc.pac.game.question.controller;
 
-import br.edu.catolicasc.pac.config.group.UserGroup;
-import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.pac.repository.game.QuestionRepository;
@@ -9,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +40,7 @@ public class QuestionController {
     }
 
     @PostMapping(value = "/create", consumes = "application/json")
-    public Question create(@RequestBody QuestionModel model) {
+    public Question create(@RequestBody QuestionModel model) throws ParseException {
         return repo.save(new Question(model));
     }
 

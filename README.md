@@ -14,6 +14,7 @@ REST API para o projeto do PAC (Terceiro semestre) :chess_pawn:
 - `SpringBoot v2.4.5`
 - `MySQL 8`
 - `JDK 15.0.2`
+- `Java 11`
 
 ### Passos para rodar a aplicação:
 1. Clonar o projeto
