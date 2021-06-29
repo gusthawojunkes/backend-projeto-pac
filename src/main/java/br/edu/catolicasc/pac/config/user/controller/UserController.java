@@ -2,7 +2,7 @@ package br.edu.catolicasc.pac.config.user.controller;
 
 import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
-import br.edu.catolicasc.pac.game.ranking.Ranking;
+import br.edu.catolicasc.pac.config.user.Ranking;
 import br.edu.catolicasc.pac.repository.config.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package br.edu.catolicasc.pac.game.ranking;
+package br.edu.catolicasc.pac.config.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
