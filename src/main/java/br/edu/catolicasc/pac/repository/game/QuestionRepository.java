@@ -10,6 +10,6 @@ import java.util.List;
 public interface QuestionRepository extends CrudRepository<Question, Long> {
 
     @Query("SELECT q FROM Question q WHERE q.level = :p1")
-    public List<Question> getQuestionByLevel(@Param("p1") Integer level, @Param("p2") Long idAluno);
+    public List<Question> getQuestionByLevel(@Param("p1") Integer level);
 
 }

@@ -3,7 +3,6 @@ package br.edu.catolicasc.pac.game.question.controller;
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.pac.repository.game.QuestionRepository;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,14 +65,12 @@ public class QuestionController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{idAluno}/{level}")
-    public List<QuestionModel> getQuestionsByLevel(@PathVariable("level") Integer level, @PathVariable("idAluno") Long idAluno) {
-        List<QuestionModel> listReturn = new ArrayList<>();
-        List<Question> questions = repo.getQuestionByLevel(level, idAluno);
-        if (CollectionUtils.isNotEmpty(questions)) {
-            for (Question question : questions) {
-                listReturn.add(Question.getModel(question));
-            }
+    @GetMapping("/level/{level}")
+    public List<QuestionModel> getQuestionsByLevel(@PathVariable("level") Integer level) {
+        List<QuestionModel> listReturn = new ArrayList<QuestionModel>();
+        Iterable<Question> questions = repo.getQuestionByLevel(level);
+        for (Question question : questions) {
+            listReturn.add(Question.getModel(question));
         }
         return listReturn;
     }
