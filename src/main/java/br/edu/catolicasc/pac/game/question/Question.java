@@ -38,7 +38,7 @@ public class Question extends AbstractEntity {
     @Column(length = 1)
     private Integer level;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
 

@@ -89,6 +89,9 @@ public class User extends AbstractEntity {
     @OneToOne(cascade = CascadeType.ALL)
     private School school;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<User> students;
+
     public void setFields(User user) {
         this.setName(user.getName());
         this.setEmail(user.getEmail());
