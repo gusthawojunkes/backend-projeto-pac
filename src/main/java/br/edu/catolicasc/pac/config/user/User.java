@@ -39,7 +39,7 @@ public class User extends AbstractEntity {
         this.extraTime = model.getExtraTime();
         this.userToken = model.getUserToken();
         this.points = model.getPoints() != null ? model.getPoints() : 0;
-        this.birth = SDF.parse(model.getBirth());
+        if (StringUtils.isNotBlank(model.getBirth())) this.birth = SDF.parse(model.getBirth());
         if (CollectionUtils.isNotEmpty(model.getQuestions())) {
             this.questions = Question.getQuestionsByListModel(model.getQuestions());
         }

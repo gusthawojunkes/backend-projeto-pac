@@ -24,7 +24,6 @@ public class Question extends AbstractEntity {
         this.title = model.getTitle();
         this.description = model.getDescription();
         this.level = model.getLevel();
-        this.owner = new User(model.getOwner());
         this.correctResponse = model.getCorrectResponse();
         this.alternatives = getListAlternativesFromListModel(model.getAlternatives());
     }

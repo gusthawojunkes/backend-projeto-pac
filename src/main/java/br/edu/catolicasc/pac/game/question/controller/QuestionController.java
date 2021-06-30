@@ -1,7 +1,10 @@
 package br.edu.catolicasc.pac.game.question.controller;
 
+import br.edu.catolicasc.pac.config.user.User;
+import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
+import br.edu.catolicasc.pac.repository.config.UserRepository;
 import br.edu.catolicasc.pac.repository.game.QuestionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +21,11 @@ import java.util.Optional;
 public class QuestionController {
 
     private final QuestionRepository repo;
+    private final UserRepository userRepo;
 
-    public QuestionController(QuestionRepository repo) {
+    public QuestionController(QuestionRepository repo, UserRepository userRepo) {
         this.repo = repo;
+        this.userRepo = userRepo;
     }
 
     @GetMapping
@@ -40,8 +45,16 @@ public class QuestionController {
     }
 
     @PostMapping(value = "/create", consumes = "application/json")
-    public Question create(@RequestBody QuestionModel model) throws ParseException {
-        return repo.save(new Question(model));
+    public ResponseEntity<?> create(@RequestBody QuestionModel model) throws ParseException {
+        User user = null;
+        UserModel owner = model.getOwner();
+        if (owner != null && owner.getId() != null) {
+            user = userRepo.findById(owner.getId()).orElse(null);
+        }
+        Question question = new Question(model);
+        question.setOwner(user);
+        repo.save(question);
+        return new ResponseEntity<>("Saved successfully!", HttpStatus.OK);
     }
 
     public Question getById(Long id) {
