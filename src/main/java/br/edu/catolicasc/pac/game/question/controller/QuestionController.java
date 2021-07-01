@@ -6,6 +6,7 @@ import br.edu.catolicasc.pac.game.question.Question;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import br.edu.catolicasc.pac.repository.config.UserRepository;
 import br.edu.catolicasc.pac.repository.game.QuestionRepository;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -80,11 +82,19 @@ public class QuestionController {
 
     @GetMapping("/level/{level}")
     public List<QuestionModel> getQuestionsByLevel(@PathVariable("level") Integer level) {
-        List<QuestionModel> listReturn = new ArrayList<QuestionModel>();
-        Iterable<Question> questions = repo.getQuestionByLevel(level);
+        return getQuestionsByLevelAndStudent(level, null);
+    }
+
+    public List<QuestionModel> getQuestionsByLevelAndStudent(@PathVariable("level") Integer level, @PathVariable("student") Long studentId) {
+        List<QuestionModel> listReturn = new ArrayList<>();
+        List<Question> questions = repo.getQuestionByLevel(level);
+
+        if (studentId != null) {}
+
         for (Question question : questions) {
             listReturn.add(Question.getModel(question));
         }
+
         return listReturn;
     }
 }
