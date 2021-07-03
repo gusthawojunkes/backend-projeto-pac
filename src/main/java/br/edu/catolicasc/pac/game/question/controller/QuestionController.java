@@ -85,11 +85,16 @@ public class QuestionController {
         return getQuestionsByLevelAndStudent(level, null);
     }
 
+    @GetMapping("/{student}/{level}")
     public List<QuestionModel> getQuestionsByLevelAndStudent(@PathVariable("level") Integer level, @PathVariable("student") Long studentId) {
         List<QuestionModel> listReturn = new ArrayList<>();
-        List<Question> questions = repo.getQuestionByLevel(level);
+        List<Question> questions = new ArrayList<>();
 
-        if (studentId != null) {}
+        if (studentId != null) {
+            questions = repo.getQuestionByStudentAndLevel(level, studentId);
+        } else {
+            repo.getQuestionByLevel(level);
+        }
 
         for (Question question : questions) {
             listReturn.add(Question.getModel(question));

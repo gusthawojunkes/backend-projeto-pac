@@ -20,7 +20,7 @@ import java.util.List;
 @Entity
 public class Question extends AbstractEntity {
 
-    public Question(QuestionModel model) throws ParseException {
+    public Question(QuestionModel model) {
         this.title = model.getTitle();
         this.description = model.getDescription();
         this.level = model.getLevel();
@@ -38,7 +38,7 @@ public class Question extends AbstractEntity {
     private Integer level;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User owner;
 
     @Column(nullable = false, length = 1)
@@ -75,7 +75,7 @@ public class Question extends AbstractEntity {
         return model;
     }
 
-    public static List<Question> getQuestionsByListModel(List<QuestionModel> questions) throws ParseException {
+    public static List<Question> getQuestionsByListModel(List<QuestionModel> questions) {
         List<Question> listQuestions = new ArrayList<>();
 
         for (QuestionModel question : questions) {

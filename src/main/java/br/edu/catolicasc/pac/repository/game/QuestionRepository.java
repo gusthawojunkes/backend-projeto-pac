@@ -12,4 +12,7 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
     @Query("SELECT q FROM Question q WHERE q.level = :p1")
     public List<Question> getQuestionByLevel(@Param("p1") Integer level);
 
+    @Query("SELECT q FROM Question q WHERE q.level = :p1 AND q.owner = (SELECT u FROM User u WHERE :p2 IN (SELECT s.id FROM u.students s))")
+    public List<Question> getQuestionByStudentAndLevel(@Param("p1") Integer level, @Param("p2") Long student);
+
 }
