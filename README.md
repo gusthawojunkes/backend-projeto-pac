@@ -198,6 +198,12 @@ Path: /level/{level}
 Method: GET
 Parameters: Level INT(1)
 Produces: application/json
+----------------------
+Path: /{student}/{level}
+Method: GET
+Parameters: Level INT(1), Student Long (Student ID)
+Produces: application/json
+
 ```
 ```
 UserGroupController: /groups

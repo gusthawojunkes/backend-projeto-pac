@@ -12,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -88,17 +86,18 @@ public class QuestionController {
     @GetMapping("/{student}/{level}")
     public List<QuestionModel> getQuestionsByLevelAndStudent(@PathVariable("level") Integer level, @PathVariable("student") Long studentId) {
         List<QuestionModel> listReturn = new ArrayList<>();
-        List<Question> questions = new ArrayList<>();
+        List<Question> questions;
 
         if (studentId != null) {
             questions = repo.getQuestionByStudentAndLevel(level, studentId);
         } else {
-            repo.getQuestionByLevel(level);
+            questions = repo.getQuestionByLevel(level);
         }
+        Collections.shuffle(questions, new Random(5));
 
-        for (Question question : questions) {
+        questions.stream().limit(5).forEach(question -> {
             listReturn.add(Question.getModel(question));
-        }
+        });
 
         return listReturn;
     }
