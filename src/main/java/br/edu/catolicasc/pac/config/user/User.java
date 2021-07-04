@@ -5,6 +5,7 @@ import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
 import br.edu.catolicasc.pac.game.question.Question;
+import br.edu.catolicasc.pac.game.report.Report;
 import br.edu.catolicasc.utils.AbstractEntity;
 import br.edu.catolicasc.utils.Utils;
 import lombok.AllArgsConstructor;
@@ -91,6 +92,10 @@ public class User extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<User> students;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_user_id")
+    private List<Report> reports;
 
     public void setFields(User user) {
         this.setName(user.getName());

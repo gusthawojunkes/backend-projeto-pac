@@ -2,14 +2,12 @@ package br.edu.catolicasc.pac.config.group.controller;
 
 import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
-import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.repository.config.UserGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +34,7 @@ public class UserGroupController {
     }
 
     @PostMapping("/create")
-    public UserGroup create(@RequestBody UserGroupModel model) {
+    public UserGroup create(UserGroupModel model) {
         return repo.save(new UserGroup(model));
     }
 

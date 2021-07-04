@@ -83,6 +83,7 @@ public class UserModel {
             model.setUf(StringUtils.isNotBlank(uf.getUf()) ? uf.getUf() : "");
             model.setUfName(StringUtils.isNotBlank(uf.getName()) ? uf.getName() : "");
         }
+        this.address = model;
     }
 
     public void setGroup(UserGroup group) {
@@ -100,10 +101,11 @@ public class UserModel {
             ActionModel actModel = new ActionModel(action);
             model.setAction(actModel);
         }
+        this.group = model;
     }
 
     public void setSchool(School school) {
         if (school == null) return;
-        SchoolModel model = new SchoolModel(school);
+        this.school = new SchoolModel(school);
     }
 }

@@ -4,6 +4,7 @@ import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.game.alternative.Alternative;
 import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
 import br.edu.catolicasc.pac.game.question.model.QuestionModel;
+import br.edu.catolicasc.pac.game.report.Report;
 import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,6 +49,10 @@ public class Question extends AbstractEntity {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Alternative> alternatives;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "report_id")
+    private List<Report> reports;
 
     private static List<Alternative> getListAlternativesFromListModel(List<AlternativeModel> listModel) {
         List<Alternative> listReturn = new ArrayList<>();
