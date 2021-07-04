@@ -86,24 +86,7 @@ Expected (example):
    "extraTime": 999,
    "birth": "17/10/2002",
    "group": {
-      "name": "Root",
-      "description": "Root",
-      "permission": {
-         "code": "1",
-         "description": "Root",
-         "viewChallenges": 1,
-         "viewRanking": 1,
-         "viewReports": 1,
-         "viewConfig": 1
-      },
-      "action": {
-         "confChallenges": 1,
-         "playChallenges": 1,
-         "confUsers": 1,
-         "viewUsers": 1,
-         "confGroups": 1,
-         "viewGroups": 1
-      }
+      "id": "1"
    },
    "address": {
       "city": "City",

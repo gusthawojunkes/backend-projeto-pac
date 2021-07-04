@@ -1,11 +1,13 @@
 package br.edu.catolicasc.pac.config.user.controller;
 
+import br.edu.catolicasc.pac.config.user.Ranking;
 import br.edu.catolicasc.pac.config.user.User;
 import br.edu.catolicasc.pac.config.user.model.UserModel;
-import br.edu.catolicasc.pac.config.user.Ranking;
+import br.edu.catolicasc.pac.repository.config.UserGroupRepository;
 import br.edu.catolicasc.pac.repository.config.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +24,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UserController {
 
     private final UserRepository repo;
+    private final UserGroupRepository groupRepo;
 
     @Autowired
-    public UserController(UserRepository repo) {
+    public UserController(UserRepository repo, UserGroupRepository groupRepo) {
         this.repo = repo;
+        this.groupRepo = groupRepo;
     }
 
     @GetMapping
@@ -44,9 +48,16 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @RequestMapping(value = "/create",
+                    method = RequestMethod.POST,
+                    produces = MediaType.APPLICATION_JSON_VALUE,
+                    consumes =  MediaType.APPLICATION_JSON_VALUE)
     public User create(@RequestBody UserModel model) throws ParseException {
-        return repo.save(new User(model));
+        User user = new User(model);
+        if (model.getGroup() != null) {
+            user.setGroup(groupRepo.findById(model.getGroup().getId()).orElse(null));
+        }
+        return repo.save(user);
     }
 
     @PostMapping("/update")
