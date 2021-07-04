@@ -8,6 +8,7 @@ import br.edu.catolicasc.pac.config.group.UserGroup;
 import br.edu.catolicasc.pac.config.group.model.UserGroupModel;
 import br.edu.catolicasc.pac.config.permission.Permission;
 import br.edu.catolicasc.pac.config.permission.model.PermissionModel;
+import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
@@ -59,19 +60,21 @@ public class UserModel {
 
     public static UserModel getModelFromUser(User user) {
         UserModel model = new UserModel();
+        model.setId(user.getId());
         model.setName(user.getName());
+        model.setBirth(User.SDF.format(user.getBirth()));
         model.setFlagMaster(user.getFlagMaster());
         model.setExtraTime(user.getExtraTime());
-        model.setAddress(user.getAddress());
-        model.setGroup(user.getGroup());
         model.setPoints(user.getPoints());
-        model.setGroup(user.getGroup());
         model.setPhone(user.getPhone());
         model.setEmail(user.getEmail());
+        model.setGroup(user.getGroup());
+        model.setAddress(user.getAddress());
+        model.setSchool(user.getSchool());
         return model;
     }
 
-    private void setAddress(Address address) {
+    public void setAddress(Address address) {
         AddressModel model = this.address;
         if(model == null) return;
         UF uf = address.getUf();
@@ -82,7 +85,7 @@ public class UserModel {
         }
     }
 
-    private void setGroup(UserGroup group) {
+    public void setGroup(UserGroup group) {
         if (group == null) return;
         UserGroupModel model = new UserGroupModel();
         Permission permission = group.getPermission();
@@ -97,5 +100,10 @@ public class UserModel {
             ActionModel actModel = new ActionModel(action);
             model.setAction(actModel);
         }
+    }
+
+    public void setSchool(School school) {
+        if (school == null) return;
+        SchoolModel model = new SchoolModel(school);
     }
 }

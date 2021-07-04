@@ -29,8 +29,13 @@ public class UserController {
     }
 
     @GetMapping
-    public Iterable<User> findAll() {
-        return repo.findAll();
+    public List<UserModel> findAll() {
+        List<UserModel> listReturn = new ArrayList<>();
+        Iterable<User> users = repo.findAll();
+        users.forEach(user -> {
+           listReturn.add(UserModel.getModelFromUser(user));
+        });
+        return listReturn;
     }
 
     @GetMapping(path = "/{id}")

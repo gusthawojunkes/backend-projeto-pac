@@ -29,15 +29,14 @@ public class UserGroupController {
     public List<UserGroupModel> findAll() {
         List<UserGroupModel> listReturn = new ArrayList<>();
         Iterable<UserGroup> groups = repo.findAll();
-        for(UserGroup group : groups) {
-            UserGroupModel model = UserGroupModel.getModelByUserGroup(group);
-            listReturn.add(model);
-        }
+        groups.forEach(group -> {
+            listReturn.add(UserGroupModel.getModelByUserGroup(group));
+        });
         return listReturn;
     }
 
     @PostMapping("/create")
-    public UserGroup create(@RequestBody UserGroupModel model) throws ParseException {
+    public UserGroup create(@RequestBody UserGroupModel model) {
         return repo.save(new UserGroup(model));
     }
 

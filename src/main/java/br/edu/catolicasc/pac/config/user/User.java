@@ -27,7 +27,7 @@ import java.util.List;
 @Entity
 public class User extends AbstractEntity {
 
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    public static final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
 
     public User(UserModel model) throws ParseException {
         this.name = model.getName();
