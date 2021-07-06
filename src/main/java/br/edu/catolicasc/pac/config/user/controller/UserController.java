@@ -48,11 +48,8 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create",
-                    method = RequestMethod.POST,
-                    produces = MediaType.APPLICATION_JSON_VALUE,
-                    consumes =  MediaType.APPLICATION_JSON_VALUE)
-    public User create(@RequestBody UserModel model) throws ParseException {
+    @PostMapping("/create")
+    public User create(UserModel model) throws ParseException {
         User user = new User(model);
         if (model.getGroup() != null) {
             user.setGroup(groupRepo.findById(model.getGroup().getId()).orElse(null));
