@@ -38,7 +38,6 @@ public class User extends AbstractEntity {
         this.phone = model.getPhone();
         this.flagMaster = model.getFlagMaster();
         this.extraTime = model.getExtraTime();
-        this.userToken = model.getUserToken();
         this.points = model.getPoints() != null ? model.getPoints() : 0;
         if (StringUtils.isNotBlank(model.getBirth())) this.birth = SDF.parse(model.getBirth());
         if (model.getAddress() != null) this.address = new Address(model.getAddress());
@@ -67,8 +66,6 @@ public class User extends AbstractEntity {
     private Integer flagMaster;
 
     private Integer extraTime;
-
-    private String userToken;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;

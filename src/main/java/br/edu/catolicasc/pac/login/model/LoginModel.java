@@ -10,10 +10,8 @@ public class LoginModel {
 
     private String login;
     private String password;
-    private String token;
 
     public Boolean isValid() {
-        //return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password) && !Utils.isEmpty(this.token);
         return !Utils.isEmpty(this.login) && !Utils.isEmpty(this.password);
     }
 }

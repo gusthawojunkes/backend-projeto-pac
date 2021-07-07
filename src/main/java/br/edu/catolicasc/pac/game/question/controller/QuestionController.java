@@ -70,7 +70,7 @@ public class QuestionController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         return repo.findById(id).map(record -> {
-            repo.deleteById(id);
+            repo.delete(record);
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
     }

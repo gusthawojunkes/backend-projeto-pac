@@ -38,19 +38,13 @@ public class LoginController {
         this.userLogin = userDAO.findByUserName(userName);
 
         if (userLogin == null) return false;
-
-        //TODO implementação do TOKEN fica para depois
-        //if (Utils.isEmpty(userLogin.getUserToken())) return false;
-
-        //String token = model.getToken();
         String password = model.getPassword();
         return userLogin.getPassword().equals(password);
-        //return userLogin.getPassword().equals(password) && userLogin.getUserToken().equals(token);
 
     }
 
     public void log(LoginModel model) {
-        System.out.println("Validating >>> [" + model.getLogin() + " - " + model.getPassword() + " - " + model.getToken() + "]");
+        System.out.println("Validating >>> [" + model.getLogin() + " - " + model.getPassword() + "]");
     }
 
 }

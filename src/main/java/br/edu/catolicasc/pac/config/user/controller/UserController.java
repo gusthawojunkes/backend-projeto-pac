@@ -48,7 +48,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
     public User create(UserModel model) throws ParseException {
         User user = new User(model);
         if (model.getGroup() != null) {
@@ -57,14 +57,13 @@ public class UserController {
         return repo.save(user);
     }
 
+    //TODO Verficar se acontece o merge ou o persist para não acontecer erro de constraint
     @PostMapping("/update")
-    public ResponseEntity<?> update(@RequestBody User user) {
-        if (user == null) return new ResponseEntity<>("User not found", HttpStatus.NO_CONTENT);
-        return repo.findById(user.getId()).map(record -> {
-            record.setFields(user);
-            User updated = repo.save(record);
-            return ResponseEntity.ok().body(updated);
-        }).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> update(@RequestBody UserModel model) throws ParseException {
+        if (model == null) return new ResponseEntity<>("Model is Empty", HttpStatus.NO_CONTENT);
+        User updated = new User(model);
+        repo.save(updated);
+        return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

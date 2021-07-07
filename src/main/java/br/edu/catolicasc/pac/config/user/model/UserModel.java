@@ -12,13 +12,10 @@ import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
-import br.edu.catolicasc.pac.game.question.model.QuestionModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -42,8 +39,6 @@ public class UserModel {
 
     private Integer extraTime;
 
-    private String userToken;
-
     @JsonProperty("address")
     private AddressModel address;
 
@@ -51,9 +46,6 @@ public class UserModel {
     private UserGroupModel group;
 
     private Integer points;
-
-    @JsonProperty("questions")
-    private List<QuestionModel> questions;
 
     @JsonProperty("school")
     private SchoolModel school;

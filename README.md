@@ -50,7 +50,6 @@ Expected (example):
     password: VARCHAR(50)
     phone: VARCHAR(20)
     flagMaster: INT(1)
-    userToken: VARCHAR(255)
     points: INT(3)
     extraTime: INT(3)
     birth: VARCHAR(10)
@@ -81,7 +80,6 @@ Expected (example):
    "password": "root",
    "phone": "(99) 99876-5432",
    "flagMaster" : 1,
-   "userToken": "AAABBBCCC",
    "points": 999,
    "extraTime": 999,
    "birth": "17/10/2002",
@@ -128,6 +126,7 @@ Expected (example):
     title: VARCHAR(50)
     description: VARCHAR(255)
     level: INT(1)
+    owner: LONG(ID from User table)
     correctResponse: CHAR
     alternatives.option: CHAR
     alternatives.description: VARCHAR(255)
@@ -137,6 +136,7 @@ Expected (example):
     "title": "Questão 1", 
     "description": "1 + 1", 
     "level": 1, 
+    "owner": 1,
     "correctResponse": "A", 
     "alternatives": [
         {
