@@ -4,8 +4,6 @@ import br.edu.catolicasc.pac.config.address.model.AddressModel;
 import br.edu.catolicasc.pac.config.classroom.Classroom;
 import br.edu.catolicasc.pac.config.classroom.model.ClassroomModel;
 import br.edu.catolicasc.pac.config.school.School;
-import br.edu.catolicasc.pac.game.alternative.Alternative;
-import br.edu.catolicasc.pac.game.alternative.model.AlternativeModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +27,7 @@ public class SchoolModel {
     private List<ClassroomModel> classes;
 
     private List<ClassroomModel> getModelList(List<Classroom> classes) {
-        List<ClassroomModel> listReturn = new ArrayList<ClassroomModel>();
+        List<ClassroomModel> listReturn = new ArrayList<>();
 
         for (Classroom classroom : classes) {
             ClassroomModel model = new ClassroomModel(classroom);

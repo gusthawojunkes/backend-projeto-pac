@@ -12,13 +12,19 @@ import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Getter
 @Setter
+@XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserModel {
 
     private Long id;

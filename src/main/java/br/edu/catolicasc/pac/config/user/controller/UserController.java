@@ -24,12 +24,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UserController {
 
     private final UserRepository repo;
-    private final UserGroupRepository groupRepo;
 
     @Autowired
-    public UserController(UserRepository repo, UserGroupRepository groupRepo) {
+    public UserController(UserRepository repo) {
         this.repo = repo;
-        this.groupRepo = groupRepo;
     }
 
     @GetMapping
@@ -48,16 +46,11 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+    @PostMapping(value = "/create")
     public User create(UserModel model) throws ParseException {
-        User user = new User(model);
-        if (model.getGroup() != null) {
-            user.setGroup(groupRepo.findById(model.getGroup().getId()).orElse(null));
-        }
-        return repo.save(user);
+        return repo.save(new User(model));
     }
 
-    //TODO Verficar se acontece o merge ou o persist para não acontecer erro de constraint
     @PostMapping("/update")
     public ResponseEntity<?> update(@RequestBody UserModel model) throws ParseException {
         if (model == null) return new ResponseEntity<>("Model is Empty", HttpStatus.NO_CONTENT);
