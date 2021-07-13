@@ -12,7 +12,6 @@ import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.pac.config.school.model.SchoolModel;
 import br.edu.catolicasc.pac.config.uf.UF;
 import br.edu.catolicasc.pac.config.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -73,8 +72,7 @@ public class UserModel {
     }
 
     public void setAddress(Address address) {
-        AddressModel model = this.address;
-        if(model == null) return;
+        AddressModel model = new AddressModel();
         UF uf = address.getUf();
         model.setCity(StringUtils.isNotBlank(address.getCity()) ? address.getCity() : "");
         if (uf != null) {

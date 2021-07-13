@@ -3,11 +3,13 @@ package br.edu.catolicasc.pac.config.address.model;
 import br.edu.catolicasc.pac.config.address.Address;
 import br.edu.catolicasc.pac.config.uf.UF;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class AddressModel {
 
     public AddressModel(Address address) {

@@ -4,7 +4,9 @@ import br.edu.catolicasc.pac.config.address.model.AddressModel;
 import br.edu.catolicasc.pac.config.classroom.Classroom;
 import br.edu.catolicasc.pac.config.classroom.model.ClassroomModel;
 import br.edu.catolicasc.pac.config.school.School;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SchoolModel {
 
     public SchoolModel(School school) {
@@ -29,10 +33,10 @@ public class SchoolModel {
     private List<ClassroomModel> getModelList(List<Classroom> classes) {
         List<ClassroomModel> listReturn = new ArrayList<>();
 
-        for (Classroom classroom : classes) {
-            ClassroomModel model = new ClassroomModel(classroom);
-            listReturn.add(model);
-        }
+        //for (Classroom classroom : classes) {
+            //ClassroomModel model = new ClassroomModel(classroom);
+            //listReturn.add(model);
+        //}
 
         return listReturn;
     }

@@ -11,6 +11,7 @@ public class ClassroomModel {
 
     public ClassroomModel(Classroom classroom) {
         this.name = classroom.getName();
+        this.school = new SchoolModel(classroom.getSchool());
     }
 
     private String name;

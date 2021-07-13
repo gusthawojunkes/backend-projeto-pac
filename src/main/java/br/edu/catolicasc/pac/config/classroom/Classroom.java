@@ -4,6 +4,7 @@ import br.edu.catolicasc.pac.config.classroom.model.ClassroomModel;
 import br.edu.catolicasc.pac.config.school.School;
 import br.edu.catolicasc.utils.AbstractEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Classroom extends AbstractEntity {
 
     public Classroom(ClassroomModel model) {
